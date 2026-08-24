@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+html {
+  overflow-x: hidden;
+}
+
+:root {
+  --void: #05070f;
+  --navy: #0a0f24;
+  --navy-2: #0d1430;
+  --blue: #2f8cf0;
+  --blue-soft: #4fa3ff;
+  --blue-deep: #12299e;
+  --ivory: #f3f5f8;
+  --ink: #030408;
+  --line: rgba(243, 245, 248, 0.1);
+  --line-strong: rgba(243, 245, 248, 0.18);
+}
+
+@theme inline {
+  --color-void: var(--void);
+  --color-navy: var(--navy);
+  --color-navy-2: var(--navy-2);
+  --color-blue: var(--blue);
+  --color-blue-soft: var(--blue-soft);
+  --color-blue-deep: var(--blue-deep);
+  --color-ivory: var(--ivory);
+  --color-ink: var(--ink);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --font-display: var(--font-sora), sans-serif;
+  --font-body: var(--font-manrope), sans-serif;
+  --font-utility: var(--font-space-mono), monospace;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background: var(--void);
+  color: var(--ivory);
+  overflow-x: hidden;
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--blue-deep);
+  color: var(--ivory);
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue-soft);
+  outline-offset: 2px;
+}
+
+/* Grão sutil de fundo — ver Reveal/atmosfera na Fase 2 */
+.bg-grain {
+  position: relative;
+}
+
+.bg-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
