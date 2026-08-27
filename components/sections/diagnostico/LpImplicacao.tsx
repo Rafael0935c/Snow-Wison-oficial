@@ -8,7 +8,7 @@ import { diagnostico } from "@/lib/content";
 export function LpImplicacao() {
   return (
     <section className="relative overflow-hidden border-y border-line py-28 lg:py-36">
-      <AmbientGlow intensity={0.16} size={30} />
+      <AmbientGlow intensity={0.11} size={30} />
 
       <div
         className="pointer-events-none absolute inset-0 flex items-center justify-center"

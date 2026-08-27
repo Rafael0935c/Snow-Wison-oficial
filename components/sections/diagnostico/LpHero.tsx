@@ -7,7 +7,7 @@ import { brand, diagnostico } from "@/lib/content";
 export function LpHero() {
   return (
     <section className="relative mx-auto flex min-h-[92vh] max-w-4xl flex-col items-center justify-center px-6 pb-24 pt-28 text-center lg:pb-32 lg:pt-32">
-      <AmbientGlow intensity={0.15} size={40} />
+      <AmbientGlow intensity={0.10} size={40} />
 
       <Reveal delay={0.05} className="relative flex flex-col items-center">
         <BrandMark size={64} glow priority />

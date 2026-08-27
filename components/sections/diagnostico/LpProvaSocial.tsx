@@ -24,7 +24,7 @@ export function LpProvaSocial() {
 
   return (
     <section className="relative mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
-      <AmbientGlow intensity={0.12} size={38} anchor="top" />
+      <AmbientGlow intensity={0.08} size={38} anchor="top" />
 
       <Reveal className="relative text-center" variant="display">
         <SectionLabel className="justify-center">

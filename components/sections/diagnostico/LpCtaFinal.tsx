@@ -8,7 +8,7 @@ export function LpCtaFinal() {
   return (
     <section className="relative overflow-hidden border-t border-line px-6 py-28 lg:py-36">
       {/* Momento da conversão: o ponto mais iluminado da página inteira. */}
-      <AmbientGlow intensity={0.24} size={46} />
+      <AmbientGlow intensity={0.16} size={46} />
 
       <div
         className="pointer-events-none absolute -bottom-16 -right-16 opacity-[0.07]"
