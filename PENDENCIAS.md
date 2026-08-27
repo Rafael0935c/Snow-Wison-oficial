@@ -6,6 +6,36 @@ publicação final. Nada nesta lista foi inventado no código — em cada
 caso, o site usa um estado vazio/desabilitado ou um `Placeholder` visível
 até o dado real chegar.
 
+## Segurança — CSP (Content-Security-Policy)
+
+Implementada em `next.config.ts` (header estático, sem middleware).
+Decisão registrada aqui porque foi um trade-off deliberado:
+
+- **Testei primeiro com nonce por requisição** (via `middleware.ts`),
+  que é a abordagem mais forte recomendada pelo Next.js. Resultado:
+  todas as páginas do site (que eram 100% estáticas) viraram
+  server-rendered a cada requisição — um nonce só existe se for gerado
+  por requisição, e isso exige passar por lógica de servidor sempre.
+  Isso contradiz o pedido de "site leve, sem travar" e a meta de
+  performance do projeto (LCP, geração estática). Removi o middleware.
+- **Abordagem atual**: CSP estática, sem nonce, com `'unsafe-inline'`
+  para scripts e estilos (cobre o único `<script>` inline do site — o
+  JSON-LD — e a hidratação do próprio Next/React). Isso é mais fraco
+  contra XSS via script injetado do que a versão com nonce, mas o site
+  não tem nenhum formulário nem conteúdo gerado por usuário renderizado
+  em lugar nenhum — não há onde injetar algo pra começo de conversa.
+  Em compensação, a CSP bloqueia de verdade: carregamento de recursos
+  de domínios não autorizados, `frame-ancestors` (clickjacking),
+  `object-src`, `base-uri`, `form-action`.
+- Se no futuro o site ganhar um formulário público (ex: aquele
+  formulário de diagnóstico que cogitamos para o Supabase), vale
+  reconsiderar o nonce com middleware — o custo de performance passa a
+  valer mais a pena quando existe superfície real de injeção de dado.
+- Testado: build de produção com todas as 14 rotas ainda estáticas,
+  zero eventos de `securitypolicyviolation` navegando por todas as
+  páginas do site (Home, Sobre, Metodologia, Modalidades, Resultados,
+  FAQ, Diagnóstico), envio ao Sentry funcionando.
+
 ## Crítico para lançar
 
 - [x] **Número de WhatsApp oficial** — configurado em `.env.local`
