@@ -427,7 +427,7 @@ export const diagnostico = {
     eyebrow: "Aula diagnóstica",
     heading: "Você entende quase tudo. Na hora de falar, trava.",
     paragraph:
-      "Isso raramente é falta de estudo. Quase sempre é falta de um caminho construído para o que você precisa fazer em inglês: a reunião de terça, a viagem de julho, a prova com data marcada.",
+      "Você já estudou bastante. O que provavelmente falta é um caminho pensado pra sua situação: a reunião de terça, a viagem de julho, a prova que já tem data marcada.",
     cta: "Agendar aula diagnóstica",
     microcopy: "Uma conversa no WhatsApp para entender seu objetivo.",
   },
@@ -439,26 +439,26 @@ export const diagnostico = {
         tag: "Negócios",
         title: "A reunião em que você virou espectador",
         description:
-          "Você acompanha tudo que dizem. Quando chega a sua vez, a frase sai pela metade — e o ponto que você queria fazer acaba indo por e-mail depois.",
+          "Você entende o que os outros falam. Na hora de responder, escolhe a frase mais simples, ou espera pra escrever aquilo por e-mail depois.",
       },
       {
         tag: "Viagem",
         title: "Tudo planejado, menos essa parte",
         description:
-          "Roteiro pronto, hotel reservado. Aí aparece algo fora do script no balcão e você percebe que decorou frase, não conversa.",
+          "O roteiro está pronto, o hotel reservado. A parte que ninguém treina é a pergunta fora do script no balcão do aeroporto.",
       },
       {
         tag: "Provas e certificações",
         title: "A data que não se move",
         description:
-          "Você não tem tempo de estudar tudo. Precisa saber o que cai, o que você ainda erra e em que ordem atacar isso.",
+          "Faltam poucas semanas. Não dá pra estudar tudo de novo. Dá pra saber o que cai, o que você ainda erra, e por onde começar.",
       },
     ],
   },
   implicacao: {
     heading: "Inglês é aquela coisa que sempre dá pra começar mês que vem.",
     paragraph:
-      "O problema é que a reunião, a viagem e a prova têm data. Estudo sem direção não tem. É por isso que a primeira coisa que fazemos não é montar um pacote — é entender aonde você precisa chegar e em quanto tempo.",
+      "A reunião, a viagem e a prova têm data marcada. Só o estudo é que nunca tem prazo. Por isso a primeira conversa aqui não é sobre qual pacote fechar. É sobre entender aonde você precisa chegar, e em quanto tempo.",
   },
   comoFunciona: {
     eyebrow: "Como funciona",
@@ -486,8 +486,8 @@ export const diagnostico = {
   },
   formatos: {
     eyebrow: "Formatos",
-    heading: "O conteúdo é o mesmo. A experiência, não.",
-    note: "Qual formato faz sentido para você é uma das coisas que a aula diagnóstica define.",
+    heading: "Qual desses encaixa no seu momento?",
+    note: "Isso é uma das coisas que a aula diagnóstica ajuda a definir.",
     items: [
       {
         tag: "Premium",
@@ -507,7 +507,7 @@ export const diagnostico = {
       {
         tag: "Específica",
         name: "Unique",
-        description: "Para objetivo específico, urgência ou prazo curto — com material próprio.",
+        description: "Para objetivo específico, urgência ou prazo curto, com material próprio.",
       },
     ],
   },
@@ -535,35 +535,35 @@ export const diagnostico = {
       {
         question: "Preciso já saber inglês para fazer a aula diagnóstica?",
         answer:
-          "Não. A aula diagnóstica existe justamente para identificar seu ponto de partida — seja ele qual for. Vários alunos começaram do zero.",
+          "Não precisa. Ela existe justamente pra identificar seu ponto de partida, seja ele qual for. Tem aluno que começou do zero.",
       },
       {
         question: "A aula diagnóstica me obriga a fechar alguma coisa?",
         answer:
-          "Não. Ela serve para você entender qual caminho faz sentido para o seu objetivo. A decisão de seguir vem depois, com a informação na mão.",
+          "Não obriga. Você sai dela sabendo qual caminho faz sentido pro seu objetivo. A decisão de seguir é sua, com a informação já na mão.",
       },
       {
         question: "E os valores?",
         answer:
-          "São apresentados na conversa, depois de entender seu objetivo e o formato adequado. Não trabalhamos com pacote fechado antes de saber aonde você quer chegar.",
+          "Entram na conversa depois que a gente entende seu objetivo e o formato adequado. Não fechamos pacote antes de saber aonde você quer chegar.",
       },
       {
         question: "As aulas são ao vivo ou gravadas?",
-        answer: "Sempre ao vivo. Nunca apenas gravadas.",
+        answer: "Ao vivo, sempre. Aula gravada não faz parte do modelo.",
       },
       {
         question: "Preciso ir a algum lugar?",
-        answer: "Não. O ensino é 100% online.",
+        answer: "Não precisa sair de casa. O ensino é 100% online, direto de onde você estiver.",
       },
       {
         question: "Quanto tempo dura e quantas aulas são?",
         answer:
-          "Varia conforme o seu objetivo. É exatamente isso que a aula diagnóstica define.",
+          "Isso varia com o seu objetivo, e é justamente uma das coisas que a aula diagnóstica define.",
       },
       {
         question: "Já tentei outros cursos e não deu certo. O que muda aqui?",
         answer:
-          "A estrutura de conteúdo existe e é sólida. O que muda é a forma como ela é aplicada: o ritmo, o foco e os recursos que o professor escolhe para o seu caso — a partir de uma leitura do seu perfil.",
+          "A estrutura de conteúdo existe e é sólida, como em qualquer curso sério. A diferença está em como ela chega até você: o ritmo, o foco e os recursos que o professor escolhe a partir de uma leitura real do seu perfil.",
       },
     ],
   },
