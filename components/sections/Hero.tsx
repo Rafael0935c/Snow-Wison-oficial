@@ -10,11 +10,11 @@ export function Hero() {
       id="hero"
       className="relative flex min-h-screen flex-col items-center justify-center px-6 pb-36 pt-44 text-center lg:pb-48 lg:pt-56"
     >
-      <Reveal delay={0.05}>
+      <Reveal delay={0.05} variant="display">
         <BrandMark size={128} glow priority className="mx-auto" />
       </Reveal>
 
-      <Reveal delay={0.22} className="mt-8 flex flex-col items-center">
+      <Reveal delay={0.26} className="mt-8 flex flex-col items-center">
         <span className="font-display text-2xl font-extrabold tracking-[0.16em] text-ivory">
           {brand.wordmark}
         </span>
@@ -23,13 +23,13 @@ export function Hero() {
         </span>
       </Reveal>
 
-      <Reveal delay={0.4} className="mt-10 max-w-3xl">
+      <Reveal delay={0.46} variant="display" className="mt-10 max-w-3xl">
         <h1 className="font-display text-[clamp(2.1rem,4.6vw,3.4rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-ivory">
           {home.hero.headline}
         </h1>
       </Reveal>
 
-      <Reveal delay={0.58} className="mt-8 flex max-w-xl flex-col items-center gap-10">
+      <Reveal delay={0.68} className="mt-8 flex max-w-xl flex-col items-center gap-10">
         <p className="text-base leading-[1.65] text-ivory/62 lg:text-lg">
           {home.hero.summary}
         </p>

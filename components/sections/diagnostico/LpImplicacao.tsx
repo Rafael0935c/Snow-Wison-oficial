@@ -21,7 +21,7 @@ export function LpImplicacao() {
         <BrandMark size={380} className="relative opacity-[0.07]" />
       </div>
 
-      <Reveal className="relative mx-auto max-w-3xl px-6 text-center">
+      <Reveal className="relative mx-auto max-w-3xl px-6 text-center" variant="display">
         <h2 className="font-display text-[clamp(1.7rem,3.2vw,2.4rem)] font-semibold leading-[1.2] text-ivory">
           {diagnostico.implicacao.heading}
         </h2>

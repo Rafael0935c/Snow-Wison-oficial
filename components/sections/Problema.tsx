@@ -13,7 +13,7 @@ export function Problema() {
       id="problema"
       className="mx-auto max-w-4xl px-6 py-32 lg:py-48"
     >
-      <Reveal className="text-center">
+      <Reveal className="text-center" variant="display">
         <SectionLabel className="justify-center">
           {home.problema.eyebrow}
         </SectionLabel>
@@ -28,8 +28,8 @@ export function Problema() {
       <ul className="mt-20">
         {home.problema.items.map((item, index) => (
           <li key={item}>
-            <Reveal delay={0.15 + index * 0.1}>
-              {index > 0 && <Divider />}
+            <Reveal delay={0.15 + index * 0.1} variant="quiet">
+              {index > 0 && <Divider fade />}
               <div className="flex items-start gap-5 py-8">
                 <span
                   className="font-utility text-2xl leading-none text-blue-soft"

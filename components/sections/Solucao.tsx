@@ -8,7 +8,7 @@ export function Solucao() {
       id="solucao"
       className="mx-auto max-w-7xl px-6 py-32 lg:px-10 lg:py-48"
     >
-      <Reveal>
+      <Reveal variant="display">
         <SectionLabel>{home.solucao.eyebrow}</SectionLabel>
         <h2 className="mt-9 max-w-3xl font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.15] text-ivory">
           {home.solucao.heading}
@@ -17,7 +17,7 @@ export function Solucao() {
 
       <div className="mt-20 grid gap-10 md:grid-cols-5 md:gap-6">
         {home.solucao.steps.map((step, index) => (
-          <Reveal key={step.number} delay={index * 0.08}>
+          <Reveal key={step.number} delay={index * 0.08} variant="quiet">
             <p className="font-display text-3xl font-semibold text-blue">
               {step.number}
             </p>

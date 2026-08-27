@@ -13,7 +13,7 @@ export function LpCtaFinal() {
         <BrandMark size={320} />
       </div>
 
-      <Reveal className="relative mx-auto max-w-3xl text-center">
+      <Reveal className="relative mx-auto max-w-3xl text-center" variant="display">
         <h2 className="font-display text-[clamp(1.9rem,3.6vw,2.8rem)] font-semibold leading-[1.15] text-ivory">
           {diagnostico.ctaFinal.headingLine1}
           <br />

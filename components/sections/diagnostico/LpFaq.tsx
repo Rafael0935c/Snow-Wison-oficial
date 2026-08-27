@@ -6,7 +6,7 @@ import { diagnostico } from "@/lib/content";
 export function LpFaq() {
   return (
     <section className="mx-auto max-w-3xl px-6 py-24 lg:py-32">
-      <Reveal className="text-center">
+      <Reveal className="text-center" variant="display">
         <SectionLabel className="justify-center">
           {diagnostico.faq.eyebrow}
         </SectionLabel>

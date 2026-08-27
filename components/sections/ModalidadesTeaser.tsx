@@ -10,7 +10,7 @@ export function ModalidadesTeaser() {
       id="modalidades-teaser"
       className="mx-auto max-w-7xl px-6 py-32 lg:px-10 lg:py-48"
     >
-      <Reveal>
+      <Reveal variant="display">
         <SectionLabel>{home.modalidadesTeaser.eyebrow}</SectionLabel>
         <div className="mt-9 flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <h2 className="max-w-2xl font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.15] text-ivory">
@@ -28,6 +28,7 @@ export function ModalidadesTeaser() {
             key={item.name}
             delay={index * 0.1}
             className="border-t border-line pt-8"
+            variant="quiet"
           >
             <p className="font-utility text-xs uppercase tracking-[0.14em] text-blue-soft">
               {item.tag}

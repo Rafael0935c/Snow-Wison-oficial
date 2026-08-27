@@ -11,7 +11,7 @@ export function Filosofia() {
       className="mx-auto max-w-7xl px-6 py-32 lg:px-10 lg:py-48"
     >
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
-        <Reveal className="lg:col-span-5">
+        <Reveal className="lg:col-span-6" variant="display">
           <SectionLabel>{home.filosofia.eyebrow}</SectionLabel>
           <h2 className="mt-9 font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.15] text-ivory">
             {home.filosofia.heading}
@@ -24,7 +24,7 @@ export function Filosofia() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.18} className="lg:col-span-6 lg:col-start-7">
+        <Reveal delay={0.18} className="lg:col-span-5 lg:col-start-8">
           <div className="flex flex-col items-start">
             <div>
               <p className="font-display text-2xl font-semibold text-ivory lg:text-3xl">

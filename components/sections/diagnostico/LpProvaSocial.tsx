@@ -23,7 +23,7 @@ export function LpProvaSocial() {
 
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
-      <Reveal className="text-center">
+      <Reveal className="text-center" variant="display">
         <SectionLabel className="justify-center">
           {diagnostico.provaSocial.eyebrow}
         </SectionLabel>
@@ -47,7 +47,7 @@ export function LpProvaSocial() {
       {videos.length > 0 && (
         <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
           {videos.map((testimonial, index) => (
-            <Reveal key={testimonial.id} delay={index * 0.1}>
+            <Reveal key={testimonial.id} delay={index * 0.1} variant="quiet">
               <video
                 src={testimonial.videoUrl}
                 controls
@@ -68,7 +68,7 @@ export function LpProvaSocial() {
 
       <div className="mt-16 columns-1 gap-8 sm:columns-2 lg:columns-3">
         {featured.map((testimonial, index) => (
-          <Reveal key={testimonial.id} delay={(index % 3) * 0.08}>
+          <Reveal key={testimonial.id} delay={(index % 3) * 0.08} variant="quiet">
             <WhatsAppBubble testimonial={testimonial} />
           </Reveal>
         ))}

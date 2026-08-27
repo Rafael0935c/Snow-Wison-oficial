@@ -1,9 +1,5 @@
 @import "tailwindcss";
 
-html {
-  overflow-x: hidden;
-}
-
 :root {
   --void: #05070f;
   --navy: #0a0f24;
@@ -15,6 +11,9 @@ html {
   --ink: #030408;
   --line: rgba(243, 245, 248, 0.1);
   --line-strong: rgba(243, 245, 248, 0.18);
+  /* Curva única de toda a interface. Desaceleração longa no fim: é o que
+     faz um movimento parecer conduzido em vez de mecânico. */
+  --ease-brand: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
@@ -34,17 +33,55 @@ html {
   --font-utility: var(--font-space-mono), monospace;
 }
 
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
+@layer base {
+  html {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
 
-body {
-  background: var(--void);
-  color: var(--ivory);
-  overflow-x: hidden;
-  font-family: var(--font-body);
-  -webkit-tap-highlight-color: transparent;
+  body {
+    background: var(--void);
+    color: var(--ivory);
+    overflow-x: hidden;
+    font-family: var(--font-body);
+    -webkit-tap-highlight-color: transparent;
+    /* Kerning e ligaduras ligados explicitamente: em títulos grandes a
+       diferença entre pares de letras mal encaixados é visível. */
+    font-kerning: normal;
+    font-optical-sizing: auto;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Sem isso, títulos quebram onde a linha acabar — deixando escadas
+     desiguais e palavras órfãs. `balance` distribui as linhas em larguras
+     próximas, que é o que distingue tipografia composta de tipografia
+     apenas renderizada. O navegador limita a ~6 linhas, então o custo em
+     títulos curtos é irrelevante. */
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  /* Tracking óptico: quanto maior o corpo, mais apertado o espaçamento
+     precisa ser para o texto não parecer solto. */
+  h1 {
+    letter-spacing: -0.025em;
+  }
+
+  h2 {
+    letter-spacing: -0.018em;
+  }
+
+  h3 {
+    letter-spacing: -0.01em;
+  }
+
+  /* Evita a última linha de um parágrafo ficar com uma palavra sozinha. */
+  p {
+    text-wrap: pretty;
+  }
 }
 
 ::selection {
@@ -54,10 +91,11 @@ body {
 
 :focus-visible {
   outline: 2px solid var(--blue-soft);
-  outline-offset: 2px;
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-/* Grão sutil de fundo — ver Reveal/atmosfera na Fase 2 */
+/* Grão sutil de fundo */
 .bg-grain {
   position: relative;
 }
@@ -70,6 +108,20 @@ body {
   opacity: 0.035;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Filete que desvanece nas pontas em vez de terminar em corte seco.
+   Detalhe pequeno, mas é o tipo de coisa que separa "linha divisória"
+   de "linha desenhada". */
+.hairline-fade {
+  border: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    var(--line-strong) 0%,
+    var(--line-strong) 55%,
+    transparent 100%
+  );
 }
 
 @media (prefers-reduced-motion: reduce) {

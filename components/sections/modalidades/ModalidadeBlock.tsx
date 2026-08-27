@@ -45,7 +45,7 @@ export function ModalidadeBlock({
           <ul>
             {features.map((feature, index) => (
               <li key={feature}>
-                {index > 0 && <Divider />}
+                {index > 0 && <Divider fade />}
                 <p className="py-4 text-ivory/70">{feature}</p>
               </li>
             ))}

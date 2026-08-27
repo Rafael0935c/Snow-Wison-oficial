@@ -5,7 +5,7 @@ import { metodologia } from "@/lib/content";
 export function Base() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
-      <Reveal>
+      <Reveal variant="display">
         <SectionLabel>{metodologia.base.eyebrow}</SectionLabel>
         <h2 className="mt-9 max-w-2xl font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.15] text-ivory">
           {metodologia.base.heading}
@@ -18,6 +18,7 @@ export function Base() {
             key={item.title}
             delay={index * 0.1}
             className="border-t border-line pt-6"
+            variant="quiet"
           >
             <p className="font-display text-lg font-semibold text-ivory">
               {item.title}

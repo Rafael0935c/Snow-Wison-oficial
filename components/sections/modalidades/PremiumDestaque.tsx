@@ -16,7 +16,7 @@ export function PremiumDestaque() {
       />
 
       <div className="relative mx-auto grid max-w-7xl gap-12 lg:grid-cols-12 lg:gap-16">
-        <Reveal className="lg:col-span-5">
+        <Reveal className="lg:col-span-6" variant="display">
           <SectionLabel>{modalidades.premiumDestaque.eyebrow}</SectionLabel>
           <h2 className="mt-9 font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.15] text-ivory">
             {modalidades.premiumDestaque.heading}
@@ -38,7 +38,7 @@ export function PremiumDestaque() {
 
         <Reveal
           delay={0.18}
-          className="flex items-center lg:col-span-6 lg:col-start-7"
+          className="flex items-center lg:col-span-5 lg:col-start-8"
         >
           <PathProgress />
         </Reveal>

@@ -10,7 +10,7 @@ type PageIntroProps = {
 export function PageIntro({ heading, paragraph }: PageIntroProps) {
   return (
     <section className="mx-auto max-w-4xl px-6 pb-20 pt-40 text-center lg:pt-52">
-      <Reveal>
+      <Reveal variant="display">
         <h1 className="font-display text-[clamp(2rem,4.2vw,3rem)] font-semibold leading-[1.1] text-ivory">
           {heading}
         </h1>

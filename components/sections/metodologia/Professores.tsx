@@ -5,7 +5,7 @@ import { metodologia } from "@/lib/content";
 export function Professores() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
-      <Reveal className="max-w-2xl">
+      <Reveal className="max-w-2xl" variant="display">
         <SectionLabel>{metodologia.professores.eyebrow}</SectionLabel>
         <h2 className="mt-9 font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.15] text-ivory">
           {metodologia.professores.heading}

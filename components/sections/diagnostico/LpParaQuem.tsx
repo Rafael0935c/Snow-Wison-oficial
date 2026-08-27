@@ -5,7 +5,7 @@ import { diagnostico } from "@/lib/content";
 export function LpParaQuem() {
   return (
     <section className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
-      <Reveal className="text-center">
+      <Reveal className="text-center" variant="display">
         <SectionLabel className="justify-center">
           {diagnostico.paraQuem.eyebrow}
         </SectionLabel>
@@ -20,6 +20,7 @@ export function LpParaQuem() {
             key={item.tag}
             delay={index * 0.12}
             className="border-t border-line pt-8"
+            variant="quiet"
           >
             <p className="font-utility text-xs uppercase tracking-[0.14em] text-blue-soft">
               {item.tag}

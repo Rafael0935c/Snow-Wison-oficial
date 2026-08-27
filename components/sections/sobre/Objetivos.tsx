@@ -4,7 +4,7 @@ import { sobre } from "@/lib/content";
 export function Objetivos() {
   return (
     <section className="mx-auto max-w-6xl px-6 py-24 lg:py-32">
-      <Reveal className="text-center">
+      <Reveal className="text-center" variant="display">
         <h2 className="font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.15] text-ivory">
           {sobre.objetivos.heading}
         </h2>

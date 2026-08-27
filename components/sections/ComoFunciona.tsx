@@ -9,7 +9,7 @@ export function ComoFunciona() {
       className="mx-auto max-w-7xl px-6 py-32 lg:px-10 lg:py-48"
     >
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-20">
-        <Reveal className="lg:col-span-5">
+        <Reveal className="lg:col-span-6" variant="display">
           <SectionLabel>{home.comoFunciona.eyebrow}</SectionLabel>
           <h2 className="mt-9 font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.15] text-ivory">
             {home.comoFunciona.heading}
@@ -19,7 +19,7 @@ export function ComoFunciona() {
           </p>
         </Reveal>
 
-        <Reveal delay={0.18} className="lg:col-span-6 lg:col-start-7">
+        <Reveal delay={0.18} className="lg:col-span-5 lg:col-start-8">
           <ol className="border-l border-line-strong">
             {home.comoFunciona.steps.map((step, index) => (
               <li key={step} className="relative py-4 pl-8">
