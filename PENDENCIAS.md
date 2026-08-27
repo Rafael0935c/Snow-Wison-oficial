@@ -63,6 +63,31 @@ Em `lib/jsonLd.ts`, os campos `address`, `telephone` e `sameAs` do
 schema.org `EducationalOrganization` estão comentados — preencher apenas
 quando o cliente confirmar os dados reais.
 
+## Landing page de tráfego pago (`/diagnostico`)
+
+Funil de objetivo único, isolado do site institucional: sem menu, sem
+links de saída, não linkada em lugar nenhum e fora do `sitemap.xml`. O
+acesso é exclusivamente pelo link do anúncio.
+
+- **URL para usar no anúncio**: `https://SEU-DOMINIO/diagnostico`
+- **Rastreio de origem**: os CTAs da LP usam uma mensagem de WhatsApp
+  própria ("Vim pelo anúncio...", em `siteConfig.whatsappMessageLp`), o
+  que permite separar leads de anúncio dos leads do site.
+- **Indexação**: mantida indexável de propósito — o Google Ads exige que
+  a página de destino seja rastreável. Se algum dia quiser tirá-la da
+  busca orgânica, adicionar `robots: { index: false }` na metadata da
+  página (só depois de confirmar que não quebra a campanha).
+
+Pendente nesta LP:
+
+- [ ] **Vídeos de depoimento** — o bloco de vídeos aparece
+      automaticamente assim que qualquer depoimento em `lib/content.ts`
+      receber um `videoUrl`. Enquanto vazio, não renderiza nada (a
+      página nunca vai ao ar com bloco de "conteúdo pendente" visível).
+- [ ] **Bio/credencial do professor** — hoje a seção "Quem ensina" mostra
+      só os critérios de qualificação. Uma credencial nomeada aumentaria
+      a autoridade percebida, especialmente para o público de negócios.
+
 ## Removido por decisão do cliente
 
 - **Seção "Parcerias"** — removida de `/resultados` a pedido do cliente,
