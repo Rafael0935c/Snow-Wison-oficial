@@ -8,12 +8,18 @@ export const siteConfig = {
   // PENDENTE — número oficial da Snow Wison, formato internacional sem símbolos (ex: 5511999999999)
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP ?? "",
   whatsappMessage: "Olá! gostaria de agendar um diagnóstico",
+  // Mensagem própria da landing page de tráfego pago (/diagnostico).
+  // Serve para identificar, no WhatsApp, quais leads vieram do anúncio.
+  whatsappMessageLp:
+    "Olá! Vim pelo anúncio e gostaria de agendar a aula diagnóstica",
   // PENDENTE — usuário do Instagram oficial
   instagram: "",
 } as const;
 
-export function getWhatsAppUrl(): string | null {
+export function getWhatsAppUrl(
+  message: string = siteConfig.whatsappMessage
+): string | null {
   if (!siteConfig.whatsappNumber) return null;
-  const encoded = encodeURIComponent(siteConfig.whatsappMessage);
+  const encoded = encodeURIComponent(message);
   return `https://wa.me/${siteConfig.whatsappNumber}?text=${encoded}`;
 }

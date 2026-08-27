@@ -2,7 +2,10 @@ import { Button, type LinkButtonProps } from "@/components/ui/Button";
 import { getWhatsAppUrl } from "@/lib/siteConfig";
 import { a11y } from "@/lib/content";
 
-type WhatsAppCTAProps = Omit<LinkButtonProps, "href">;
+type WhatsAppCTAProps = Omit<LinkButtonProps, "href"> & {
+  /** Mensagem pré-preenchida. Omitir usa a mensagem padrão do site. */
+  message?: string;
+};
 
 // CTA de texto que sempre aponta para o WhatsApp da Snow Wison.
 // Sem número configurado, renderiza em estado desabilitado — nunca
@@ -11,9 +14,10 @@ export function WhatsAppCTA({
   children,
   variant = "primary",
   className = "",
+  message,
   ...props
 }: WhatsAppCTAProps) {
-  const url = getWhatsAppUrl();
+  const url = getWhatsAppUrl(message);
 
   if (!url) {
     if (process.env.NODE_ENV !== "production") {

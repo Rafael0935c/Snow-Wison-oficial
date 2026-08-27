@@ -418,6 +418,165 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
+// Landing page de tráfego pago (/diagnostico). Objetivo único: levar ao
+// WhatsApp para agendar a aula diagnóstica. Não é linkada no menu — só
+// acessível pelo link do anúncio. Nenhuma menção a valores, por decisão
+// do cliente e coerência com o resto do site.
+export const diagnostico = {
+  hero: {
+    eyebrow: "Aula diagnóstica",
+    heading: "Você entende quase tudo. Na hora de falar, trava.",
+    paragraph:
+      "Isso raramente é falta de estudo. Quase sempre é falta de um caminho construído para o que você precisa fazer em inglês: a reunião de terça, a viagem de julho, a prova com data marcada.",
+    cta: "Agendar aula diagnóstica",
+    microcopy: "Uma conversa no WhatsApp para entender seu objetivo.",
+  },
+  paraQuem: {
+    eyebrow: "Para quem é",
+    heading: "Três pontos de partida. O mesmo travamento.",
+    items: [
+      {
+        tag: "Negócios",
+        title: "A reunião em que você virou espectador",
+        description:
+          "Você acompanha tudo que dizem. Quando chega a sua vez, a frase sai pela metade — e o ponto que você queria fazer acaba indo por e-mail depois.",
+      },
+      {
+        tag: "Viagem",
+        title: "Tudo planejado, menos essa parte",
+        description:
+          "Roteiro pronto, hotel reservado. Aí aparece algo fora do script no balcão e você percebe que decorou frase, não conversa.",
+      },
+      {
+        tag: "Provas e certificações",
+        title: "A data que não se move",
+        description:
+          "Você não tem tempo de estudar tudo. Precisa saber o que cai, o que você ainda erra e em que ordem atacar isso.",
+      },
+    ],
+  },
+  implicacao: {
+    heading: "Inglês é aquela coisa que sempre dá pra começar mês que vem.",
+    paragraph:
+      "O problema é que a reunião, a viagem e a prova têm data. Estudo sem direção não tem. É por isso que a primeira coisa que fazemos não é montar um pacote — é entender aonde você precisa chegar e em quanto tempo.",
+  },
+  comoFunciona: {
+    eyebrow: "Como funciona",
+    heading: "O que acontece na aula diagnóstica.",
+    steps: [
+      {
+        number: "01",
+        title: "Você diz aonde quer chegar",
+        description:
+          "Reunião, viagem, prova, entrevista. Quanto mais específico, melhor.",
+      },
+      {
+        number: "02",
+        title: "A gente vê onde você está hoje",
+        description:
+          "Não é teste com nota. É entender o que já funciona e o que trava.",
+      },
+      {
+        number: "03",
+        title: "Você sai com o caminho na mão",
+        description:
+          "Qual conteúdo, em que ordem, em qual formato — e o que esperar de cada etapa.",
+      },
+    ],
+  },
+  formatos: {
+    eyebrow: "Formatos",
+    heading: "O conteúdo é o mesmo. A experiência, não.",
+    note: "Qual formato faz sentido para você é uma das coisas que a aula diagnóstica define.",
+    items: [
+      {
+        tag: "Premium",
+        name: "Individual",
+        description: "Ritmo, foco e aplicação construídos em torno de um aluno só.",
+      },
+      {
+        tag: "Plus",
+        name: "Dupla",
+        description: "Interação e acompanhamento, com a mesma estrutura de conteúdo.",
+      },
+      {
+        tag: "Economic",
+        name: "Grupo",
+        description: "Ambiente colaborativo, mesmo padrão de conteúdo das demais.",
+      },
+      {
+        tag: "Específica",
+        name: "Unique",
+        description: "Para objetivo específico, urgência ou prazo curto — com material próprio.",
+      },
+    ],
+  },
+  provaSocial: {
+    eyebrow: "Resultados",
+    heading: "O que os alunos dizem depois da primeira aula.",
+    note: "Mensagens recebidas no WhatsApp, publicadas com autorização.",
+  },
+  professor: {
+    eyebrow: "Quem ensina",
+    heading: "Quem vai estar do outro lado da tela.",
+    paragraph:
+      "A Snow Wison trabalha apenas com professores que apresentem alguma das qualificações abaixo. Todos passam por um treinamento interno, alinhado à metodologia da escola.",
+    criteria: [
+      "Graduação",
+      "Mestrado",
+      "Experiência comprovada",
+      "Certificações internacionais",
+    ],
+  },
+  faq: {
+    eyebrow: "Antes de você perguntar",
+    heading: "O que costuma travar a decisão.",
+    items: [
+      {
+        question: "Preciso já saber inglês para fazer a aula diagnóstica?",
+        answer:
+          "Não. A aula diagnóstica existe justamente para identificar seu ponto de partida — seja ele qual for. Vários alunos começaram do zero.",
+      },
+      {
+        question: "A aula diagnóstica me obriga a fechar alguma coisa?",
+        answer:
+          "Não. Ela serve para você entender qual caminho faz sentido para o seu objetivo. A decisão de seguir vem depois, com a informação na mão.",
+      },
+      {
+        question: "E os valores?",
+        answer:
+          "São apresentados na conversa, depois de entender seu objetivo e o formato adequado. Não trabalhamos com pacote fechado antes de saber aonde você quer chegar.",
+      },
+      {
+        question: "As aulas são ao vivo ou gravadas?",
+        answer: "Sempre ao vivo. Nunca apenas gravadas.",
+      },
+      {
+        question: "Preciso ir a algum lugar?",
+        answer: "Não. O ensino é 100% online.",
+      },
+      {
+        question: "Quanto tempo dura e quantas aulas são?",
+        answer:
+          "Varia conforme o seu objetivo. É exatamente isso que a aula diagnóstica define.",
+      },
+      {
+        question: "Já tentei outros cursos e não deu certo. O que muda aqui?",
+        answer:
+          "A estrutura de conteúdo existe e é sólida. O que muda é a forma como ela é aplicada: o ritmo, o foco e os recursos que o professor escolhe para o seu caso — a partir de uma leitura do seu perfil.",
+      },
+    ],
+  },
+  ctaFinal: {
+    headingLine1: "Uma conversa antes de qualquer aula.",
+    headingLine2: "É assim que começa.",
+    paragraph:
+      "Conte seu objetivo, entenda onde você está e saia sabendo o caminho. Sem compromisso de seguir.",
+    cta: "Agendar aula diagnóstica",
+    microcopy: "Você fala direto com nossa equipe pelo WhatsApp.",
+  },
+} as const;
+
 export const faq = {
   intro: {
     heading: "Perguntas frequentes",

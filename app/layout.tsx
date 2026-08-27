@@ -7,6 +7,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFAB } from "@/components/layout/WhatsAppFAB";
 import { Atmosphere } from "@/components/layout/Atmosphere";
+import { SiteChrome } from "@/components/layout/SiteChrome";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -72,10 +73,13 @@ export default function RootLayout({
           {a11y.skipLink}
         </a>
         <Atmosphere />
-        <Header />
-        <div className="relative z-10 flex flex-1 flex-col">{children}</div>
-        <Footer />
-        <WhatsAppFAB />
+        <SiteChrome
+          header={<Header />}
+          footer={<Footer />}
+          fab={<WhatsAppFAB />}
+        >
+          {children}
+        </SiteChrome>
       </body>
     </html>
   );
