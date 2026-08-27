@@ -1,11 +1,15 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { BrandMark } from "@/components/ui/BrandMark";
+import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { LpCta } from "@/components/sections/diagnostico/LpCta";
 import { diagnostico } from "@/lib/content";
 
 export function LpCtaFinal() {
   return (
     <section className="relative overflow-hidden border-t border-line px-6 py-28 lg:py-36">
+      {/* Momento da conversão: o ponto mais iluminado da página inteira. */}
+      <AmbientGlow intensity={0.24} size={46} />
+
       <div
         className="pointer-events-none absolute -bottom-16 -right-16 opacity-[0.07]"
         aria-hidden="true"

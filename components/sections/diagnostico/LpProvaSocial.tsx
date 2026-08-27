@@ -1,5 +1,6 @@
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/ui/Reveal";
+import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { WhatsAppBubble } from "@/components/sections/resultados/WhatsAppBubble";
 import { diagnostico, resultados, testimonials } from "@/lib/content";
 
@@ -22,8 +23,10 @@ export function LpProvaSocial() {
   if (featured.length === 0 && videos.length === 0) return null;
 
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
-      <Reveal className="text-center" variant="display">
+    <section className="relative mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
+      <AmbientGlow intensity={0.12} size={38} anchor="top" />
+
+      <Reveal className="relative text-center" variant="display">
         <SectionLabel className="justify-center">
           {diagnostico.provaSocial.eyebrow}
         </SectionLabel>

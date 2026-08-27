@@ -1,5 +1,6 @@
 import { Reveal } from "@/components/ui/Reveal";
 import { BrandMark } from "@/components/ui/BrandMark";
+import { AmbientGlow } from "@/components/ui/AmbientGlow";
 import { diagnostico } from "@/lib/content";
 
 // Momento de respiro da LP: uma afirmação só, com peso. Faz a ponte
@@ -7,18 +8,13 @@ import { diagnostico } from "@/lib/content";
 export function LpImplicacao() {
   return (
     <section className="relative overflow-hidden border-y border-line py-28 lg:py-36">
+      <AmbientGlow intensity={0.16} size={30} />
+
       <div
         className="pointer-events-none absolute inset-0 flex items-center justify-center"
         aria-hidden="true"
       >
-        <div
-          className="absolute h-[30rem] w-[30rem] rounded-full blur-3xl"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(47,140,240,0.16), transparent 70%)",
-          }}
-        />
-        <BrandMark size={380} className="relative opacity-[0.07]" />
+        <BrandMark size={380} className="opacity-[0.07]" />
       </div>
 
       <Reveal className="relative mx-auto max-w-3xl px-6 text-center" variant="display">
