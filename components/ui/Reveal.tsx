@@ -29,7 +29,7 @@ const EASE_BRAND = [0.16, 1, 0.3, 1] as const;
 // página pesada sem motivo.
 const variants = {
   display: {
-    hidden: { opacity: 0, y: 44, filter: "blur(10px)", scale: 0.985 },
+    hidden: { opacity: 0, y: 44, filter: "blur(5px)", scale: 0.992 },
     shown: { opacity: 1, y: 0, filter: "blur(0px)", scale: 1 },
     duration: 1.25,
   },
