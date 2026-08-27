@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { sora, manrope, spaceMono } from "@/lib/fonts";
 import { siteConfig } from "@/lib/siteConfig";
 import { a11y } from "@/lib/content";
-import { educationalOrganizationJsonLd } from "@/lib/jsonLd";
+import { educationalOrganizationJsonLd, serializeJsonLd } from "@/lib/jsonLd";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFAB } from "@/components/layout/WhatsAppFAB";
@@ -61,7 +61,7 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(educationalOrganizationJsonLd),
+            __html: serializeJsonLd(educationalOrganizationJsonLd),
           }}
         />
       </head>
