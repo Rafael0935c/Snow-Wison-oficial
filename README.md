@@ -60,28 +60,71 @@ visível (títulos, parágrafos, listas, microcopy), edite esse arquivo.
 
 ### Depoimentos
 
-Em `lib/content.ts`, o array `testimonials` já está preenchido com 11
+Em `lib/content.ts`, o array `testimonials` está preenchido com
 depoimentos reais (recebidos via WhatsApp, revisados só na
 gramática/ortografia). São exibidos em `/resultados` como bolhas de
-chat (`components/sections/resultados/WhatsAppBubble.tsx`), sem foto ou
-vídeo. Para adicionar mais, ou anexar foto/vídeo a um já existente:
+chat (`components/sections/resultados/WhatsAppBubble.tsx`). Para
+adicionar mais, ou anexar vídeo a um já existente:
 
 ```ts
 export const testimonials: Testimonial[] = [
   {
-    id: "t12",
+    id: "t13",
     name: "Nome do aluno",
     role: "Aluno(a) Premium/Plus/Economic/Unique",
     quote: "Trecho do depoimento.",
-    videoUrl: "https://.../video.mp4",   // opcional
-    photoUrl: "https://.../foto.jpg",    // opcional
+    videoUrl: "/videos/depoimento-2.mp4",        // opcional
+    photoUrl: "/videos/depoimento-2-capa.jpg",   // capa do vídeo, opcional
   },
   // ...
 ];
 ```
 
-Se o array ficar totalmente vazio (todos sem `quote`), a seção volta a
-mostrar um `Placeholder` de "conteúdo pendente" automaticamente.
+Quem tiver `videoUrl` aparece em destaque, acima da grade de bolhas —
+tanto em `/resultados` quanto na landing page. Se o array ficar
+totalmente vazio (todos sem `quote`), a seção volta a mostrar um
+`Placeholder` de "conteúdo pendente" automaticamente.
+
+### Como preparar um vídeo antes de subir
+
+Vídeo gravado em celular **não pode ir direto para `public/videos/`**.
+Dois problemas aparecem quase sempre:
+
+1. **Codec HEVC/H.265** — padrão em iPhone. Toca no Safari, mas **não no
+   Chrome nem no Firefox**: a maioria dos visitantes veria um quadrado
+   preto. Precisa ser convertido para **H.264**.
+2. **Tamanho** — um vídeo de 50s pode passar de 100 MB, que é o limite
+   rígido do GitHub (o push é recusado), além de pesar demais na página.
+
+O comando abaixo resolve os dois (foi o usado no vídeo da Maria Clara,
+que saiu de 103 MB para 5,8 MB sem perda visível):
+
+```bash
+npm i -D ffmpeg-static --no-save
+
+node -e "console.log(require('ffmpeg-static'))"   # caminho do binário
+
+# troque <ffmpeg> pelo caminho acima e <entrada> pelo arquivo original
+<ffmpeg> -i <entrada>.MP4 \
+  -vf "scale=720:-2" \
+  -c:v libx264 -profile:v main -crf 27 -preset slow -pix_fmt yuv420p \
+  -c:a aac -b:a 96k \
+  -movflags +faststart \
+  public/videos/depoimento-N.mp4
+
+# capa: escolha um segundo em que a pessoa esteja com o rosto composto
+<ffmpeg> -ss 42 -i public/videos/depoimento-N.mp4 -frames:v 1 \
+  -vf "scale=540:-2" -q:v 3 public/videos/depoimento-N-capa.jpg
+
+rm -rf node_modules/ffmpeg-static   # o binário não fica no projeto
+```
+
+`-movflags +faststart` faz o vídeo começar a tocar antes de baixar por
+completo. O player usa `preload="metadata"`, então o arquivo inteiro só
+é transferido se a pessoa apertar play.
+
+O componente (`components/ui/VideoTestimonial.tsx`) espera **vídeo
+vertical 9:16**. Para vídeo horizontal, ajustar o `aspect-[9/16]` lá.
 
 A seção "Professores" em `/metodologia` está com a equipe ainda em
 recrutamento — mostra só os critérios de seleção por enquanto. Quando os

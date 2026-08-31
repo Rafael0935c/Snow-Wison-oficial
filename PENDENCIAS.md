@@ -110,10 +110,14 @@ acesso é exclusivamente pelo link do anúncio.
 
 Pendente nesta LP:
 
-- [ ] **Vídeos de depoimento** — o bloco de vídeos aparece
-      automaticamente assim que qualquer depoimento em `lib/content.ts`
-      receber um `videoUrl`. Enquanto vazio, não renderiza nada (a
-      página nunca vai ao ar com bloco de "conteúdo pendente" visível).
+- [x] ~~Vídeos de depoimento~~ — o primeiro está no ar: Maria Clara
+      (Aluna Premium), com uso de imagem autorizado por ela. Aparece na
+      LP e em `/resultados`. Para adicionar outros, basta preencher
+      `videoUrl` (e opcionalmente `photoUrl`, a capa) em qualquer
+      depoimento de `lib/content.ts` — o bloco aparece sozinho.
+      **Antes de subir um vídeo novo, ver "Como preparar um vídeo" no
+      `README.md`**: arquivos de celular costumam vir em HEVC, que não
+      toca em Chrome/Firefox, e acima de 100 MB o GitHub recusa.
 - [ ] **Bio/credencial do professor** — hoje a seção "Quem ensina" mostra
       só os critérios de qualificação. Uma credencial nomeada aumentaria
       a autoridade percebida, especialmente para o público de negócios.
