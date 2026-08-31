@@ -138,6 +138,58 @@ origem dos arquivos recebidos, o problema de arquivos `.svg` que na
 verdade são raster, e a ocorrência do texto "NORVEN" em um dos arquivos
 do lote original (não utilizado no site).
 
+## Publicação
+
+O projeto builda de duas formas, e as duas ficam vivas de propósito —
+a ideia é poder começar na Cloudflare e migrar para a Vercel depois sem
+reescrever nada.
+
+| | Cloudflare Pages | Vercel |
+|---|---|---|
+| Comando de build | `npm run build:static` | `npm run build` |
+| Pasta de saída | `out` | (automática) |
+| Headers/CSP | `public/_headers` (gerado no build) | `headers()` do `next.config.ts` |
+| Otimização de imagem | não há (por isso o logo é WebP) | automática |
+
+A escolha é feita sozinha: a Cloudflare define `CF_PAGES=1` no ambiente
+de build dela, e o `next.config.ts` detecta isso e liga o modo estático.
+Localmente dá para reproduzir o mesmo build com
+`STATIC_EXPORT=true npm run build:static`.
+
+### Publicando na Cloudflare Pages
+
+1. Cloudflare → **Workers & Pages** → **Create** → **Pages** → conectar
+   ao GitHub e escolher o repositório `Snow-Wison-oficial`
+   (liberar **apenas** esse repositório).
+2. Configuração do build:
+   - Framework preset: **None** (não usar o preset Next.js — ele espera
+     build com servidor)
+   - Build command: `npm run build:static`
+   - Build output directory: `out`
+3. **Variáveis de ambiente** (Settings → Environment variables). Esse é o
+   passo mais fácil de esquecer: sem ele os botões de WhatsApp sobem
+   desabilitados, porque o `.env.local` não vai para o deploy.
+   - `NEXT_PUBLIC_WHATSAPP`
+   - `NEXT_PUBLIC_SENTRY_DSN`
+   - `NEXT_PUBLIC_SITE_URL` (o domínio final, sem barra no fim)
+4. Publicar. Cada `git push` na branch `main` gera um novo deploy sozinho.
+
+### Migrando para a Vercel depois
+
+Importar o mesmo repositório, deixar o build padrão (`npm run build`) e
+recadastrar as três variáveis. Não é preciso mexer em código: sem
+`CF_PAGES`, o projeto volta a rodar como app Next.js normal e os headers
+voltam a sair do `next.config.ts`.
+
+### Headers de segurança
+
+Definidos em **um lugar só**: `config/security-headers.mjs`. O
+`next.config.ts` lê de lá, e `scripts/generate-headers.mjs` gera o
+`public/_headers` a partir da mesma fonte durante o `build:static`.
+
+Não editar `public/_headers` à mão — ele é sobrescrito a cada build. Para
+mudar a CSP, editar `config/security-headers.mjs`.
+
 ## Pendências do cliente
 
 Ver [`PENDENCIAS.md`](PENDENCIAS.md).

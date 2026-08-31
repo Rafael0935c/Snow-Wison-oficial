@@ -1,0 +1,23 @@
+# ARQUIVO GERADO — não editar à mão.
+# Origem: config/security-headers.mjs (via scripts/generate-headers.mjs)
+
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; media-src 'self' https:; font-src 'self'; connect-src 'self' https://*.ingest.us.sentry.io https://*.sentry.io; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+
+# As rotas de ícone e imagem de compartilhamento são exportadas pelo
+# Next como arquivos SEM extensão. Sem isso a Cloudflare as serviria
+# como octet-stream e o navegador não as reconheceria como imagem.
+/icon
+  Content-Type: image/png
+/apple-icon
+  Content-Type: image/png
+/opengraph-image
+  Content-Type: image/png
+
+# Assets com hash no nome nunca mudam de conteúdo: cache longo.
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable

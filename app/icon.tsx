@@ -2,6 +2,10 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
+// Necessário para o export estático (Cloudflare): diz ao Next que
+// esta rota é gerada no build, não sob demanda.
+export const dynamic = "force-static";
+
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 

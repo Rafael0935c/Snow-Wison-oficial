@@ -1,5 +1,10 @@
 import Image from "next/image";
-import logoMark from "@/public/brand/logo-mark.png";
+// WebP: 24KB contra 404KB do PNG equivalente, sem perda visível. Importa
+// porque no build estático (Cloudflare) não há otimizador de imagem sob
+// demanda — o arquivo vai para o visitante do jeito que está aqui.
+// O PNG continua existindo: é ele que os geradores de ícone e da imagem
+// de compartilhamento leem em tempo de build.
+import logoMark from "@/public/brand/logo-mark.webp";
 
 type BrandMarkProps = {
   size?: number;
