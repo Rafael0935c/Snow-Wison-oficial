@@ -1,6 +1,7 @@
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { Reveal } from "@/components/ui/Reveal";
 import { AmbientGlow } from "@/components/ui/AmbientGlow";
+import { VideoTestimonial } from "@/components/ui/VideoTestimonial";
 import { WhatsAppBubble } from "@/components/sections/resultados/WhatsAppBubble";
 import { diagnostico, resultados, testimonials } from "@/lib/content";
 
@@ -48,22 +49,10 @@ export function LpProvaSocial() {
       </Reveal>
 
       {videos.length > 0 && (
-        <div className="mt-16 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 flex flex-wrap justify-center gap-10">
           {videos.map((testimonial, index) => (
             <Reveal key={testimonial.id} delay={index * 0.1} variant="quiet">
-              <video
-                src={testimonial.videoUrl}
-                controls
-                preload="none"
-                poster={testimonial.photoUrl}
-                className="aspect-video w-full rounded-sm bg-navy"
-              />
-              <p className="mt-3 font-display text-sm font-semibold text-ivory">
-                {testimonial.name}
-              </p>
-              <p className="font-utility text-[0.65rem] uppercase tracking-[0.1em] text-blue-soft">
-                {testimonial.role}
-              </p>
+              <VideoTestimonial testimonial={testimonial} />
             </Reveal>
           ))}
         </div>

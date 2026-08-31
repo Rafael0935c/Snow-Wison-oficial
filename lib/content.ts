@@ -409,6 +409,10 @@ export const testimonials: Testimonial[] = [
     role: "Aluna Premium",
     quote:
       "Foi incrível! A aula do professor Rafael é bem dinâmica e divertida, além de explicar muito bem os conceitos. Ansiosa para a próxima aula!",
+    // Vídeo vertical (9:16), recebido em HEVC 1440x2560 e reconvertido
+    // para H.264 720p — HEVC não toca em Chrome/Firefox.
+    videoUrl: "/videos/depoimento-1.mp4",
+    photoUrl: "/videos/depoimento-1-capa.jpg",
   },
   {
     id: "t12",
