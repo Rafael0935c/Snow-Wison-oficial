@@ -1,0 +1,22 @@
+{
+  // Configuração explícita do deploy na Cloudflare.
+  //
+  // Sem este arquivo, a Cloudflare detecta "Next.js" e aplica sozinha o
+  // preset de Workers com o adaptador OpenNext — que serve para rodar
+  // Next.js COM servidor. Este site é 100% estático, então esse caminho
+  // além de desnecessário falhava: o preset gerava um binding
+  // (WORKER_SELF_REFERENCE) apontando para um Worker com o nome do
+  // package.json, que não existe.
+  //
+  // Aqui declaramos o que o site realmente é: uma pasta de arquivos
+  // estáticos. Sem `main`, não há código de servidor — a Cloudflare só
+  // serve os arquivos.
+  "name": "snow-wison-oficial",
+  "compatibility_date": "2026-08-01",
+  "assets": {
+    "directory": "./out",
+    // Rotas inexistentes caem na página 404 do próprio site, em vez de
+    // um erro genérico da Cloudflare.
+    "not_found_handling": "404-page"
+  }
+}
