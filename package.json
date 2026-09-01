@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "build:static": "node scripts/generate-headers.mjs && next build"
+    "build:static": "node scripts/build-static.mjs"
   },
   "dependencies": {
     "@sentry/nextjs": "^10.70.0",
