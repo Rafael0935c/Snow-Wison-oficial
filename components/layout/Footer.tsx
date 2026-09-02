@@ -31,7 +31,7 @@ export function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-body text-sm text-ivory/60 hover:text-ivory"
+                className="inline-flex min-h-11 items-center font-body text-sm text-ivory/60 hover:text-ivory"
               >
                 {link.label}
               </Link>

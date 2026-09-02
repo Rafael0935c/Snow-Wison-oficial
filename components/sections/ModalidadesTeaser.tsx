@@ -38,7 +38,7 @@ export function ModalidadesTeaser() {
             </p>
             <Link
               href="/modalidades"
-              className="mt-6 inline-flex items-center gap-2 text-sm text-ivory/70 transition-colors hover:text-ivory"
+              className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm text-ivory/70 transition-colors hover:text-ivory"
             >
               {home.modalidadesTeaser.cta}
               <ArrowRight className="h-4 w-4" aria-hidden="true" />

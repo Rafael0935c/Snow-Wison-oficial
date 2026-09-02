@@ -36,6 +36,44 @@ Decisão registrada aqui porque foi um trade-off deliberado:
   páginas do site (Home, Sobre, Metodologia, Modalidades, Resultados,
   FAQ, Diagnóstico), envio ao Sentry funcionando.
 
+## Revisão de segurança e dispositivos (set/2026)
+
+Auditoria completa do site publicado. Corrigido em código:
+
+- **HSTS** (`Strict-Transport-Security`) adicionado à fonte única de
+  headers. Depois da primeira visita HTTPS, o navegador nem tenta HTTP.
+- **`public/brand/` estava no ar** — inclusive este tipo de README
+  interno e o PNG original de 1,5 MB. Movido para `assets/brand/`, fora
+  do build publicado. Os geradores de ícone/OG leem de lá em build.
+- **Vídeo de depoimento volta à capa ao terminar** (`load()` no evento
+  `ended`), para o rosto do aluno não ficar congelado na página. Também
+  sem botão de download e sem picture-in-picture. Verificado com
+  reprodução real até o fim, não só com evento sintético.
+- **Alvos de toque < 44 px** corrigidos: logo do header, links "Conhecer",
+  links do rodapé e do menu mobile. Menu de desktop passou a entrar só em
+  `lg` (1024 px): em 768 (iPad em pé) os 6 links + CTA não cabiam e
+  "Quem somos" quebrava em duas linhas.
+- **Fontes**: 11 pesos carregados para 3 em uso (400/600/800). Cortados
+  os não usados: 14 → 11 arquivos, 188 → 156 KB.
+
+Verificado em 360, 375, 768, 1024, 1440 e 1920 px: zero overflow
+horizontal, zero alvos de toque abaixo de 44 px, conteúdo centrado.
+Links de WhatsApp: 62 em 7 páginas, todos com o número correto,
+`target=_blank` + `rel="noopener noreferrer"`, mensagem de rastreio
+preservada na LP.
+
+**Lacuna que não fecha em código:** `http://` responde 200 em vez de
+redirecionar para `https://`. Num Worker só de arquivos estáticos não
+há onde fazer esse redirect. Quando o domínio próprio estiver na
+Cloudflare, ligar **SSL/TLS → Edge Certificates → Always Use HTTPS**.
+Até lá, o HSTS cobre todo visitante a partir da segunda visita, e a CSP
+(`upgrade-insecure-requests`) cobre os recursos da página.
+
+**Peso do JavaScript:** 299 KB comprimido, dos quais ~129 KB são o SDK
+do Sentry. Para um site estático sem formulário, é o maior item da
+conta. Mantido porque o monitoramento foi pedido; se um dia pesar, é a
+primeira coisa a reconsiderar.
+
 ## Crítico para lançar
 
 - [x] **Número de WhatsApp oficial** — configurado em `.env.local`
@@ -47,7 +85,7 @@ Decisão registrada aqui porque foi um trade-off deliberado:
 - [ ] **URL definitiva do domínio** — usada em metadata, Open Graph,
       sitemap e JSON-LD. Configurar em `NEXT_PUBLIC_SITE_URL`.
 - [ ] **Logo em vetor real** — os arquivos recebidos são raster (PNG/JPEG)
-      disfarçados de `.svg`. Ver `public/brand/README.md` para o
+      disfarçados de `.svg`. Ver `assets/brand/README.md` para o
       detalhamento completo, incluindo a ocorrência do texto "NORVEN" em
       um dos arquivos do lote original.
 
@@ -84,7 +122,7 @@ Decisão registrada aqui porque foi um trade-off deliberado:
 - [ ] **Política de Privacidade** — página/rota ainda não existe.
 - [ ] **Termos de Uso** — página/rota ainda não existe.
 - [ ] **Confirmação sobre exclusividade da marca** — ver a nota sobre o
-      texto "NORVEN" em `public/brand/README.md`. Recomendado esclarecer
+      texto "NORVEN" em `assets/brand/README.md`. Recomendado esclarecer
       com o cliente antes de considerar o logo definitivo.
 
 ## Endereço e contato (JSON-LD / SEO)

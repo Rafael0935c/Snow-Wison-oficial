@@ -32,14 +32,14 @@ export function Header() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
         <Link
           href="/"
-          className="flex items-center gap-3"
+          className="-m-2 flex min-h-11 min-w-11 items-center gap-3 p-2"
           aria-label={`${brand.wordmark} ${brand.wordmarkSuffix} — início`}
         >
           <BrandMark size={32} />
         </Link>
 
         <nav
-          className="hidden items-center gap-8 md:flex"
+          className="hidden items-center gap-8 lg:flex"
           aria-label="Navegação principal"
         >
           {nav.links.map((link) => {
@@ -48,7 +48,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-body text-sm transition-colors ${
+                className={`inline-flex min-h-11 items-center whitespace-nowrap font-body text-sm transition-colors ${
                   isActive
                     ? "text-ivory underline decoration-blue-soft underline-offset-8"
                     : "text-ivory/65 hover:text-ivory"
@@ -60,7 +60,7 @@ export function Header() {
           })}
         </nav>
 
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <WhatsAppCTA className="px-5 py-2.5 text-xs">{nav.cta}</WhatsAppCTA>
         </div>
 

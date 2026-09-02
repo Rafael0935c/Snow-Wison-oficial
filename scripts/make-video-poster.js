@@ -21,7 +21,7 @@ const IVORY = "#f3f5f8";
 const BLUE_SOFT = "#4fa3ff";
 
 async function run() {
-  const logo = await sharp(path.join("public/brand/logo-mark.png"))
+  const logo = await sharp(path.join("assets/brand/logo-mark.png"))
     .resize({ height: 420 })
     .toBuffer();
   const logoMeta = await sharp(logo).metadata();

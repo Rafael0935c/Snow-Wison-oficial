@@ -12,7 +12,7 @@ export const contentType = "image/png";
 
 export default function OpengraphImage() {
   const logoBase64 = readFileSync(
-    join(process.cwd(), "public/brand/logo-mark.png")
+    join(process.cwd(), "assets/brand/logo-mark.png")
   ).toString("base64");
 
   return new ImageResponse(

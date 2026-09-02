@@ -1,8 +1,8 @@
 const sharp = require("sharp");
 const path = require("path");
 
-const SRC = path.join(process.cwd(), "public/brand/logo-mark-source.png");
-const OUT = path.join(process.cwd(), "public/brand/logo-mark.png");
+const SRC = path.join(process.cwd(), "assets/brand/logo-mark-source.png");
+const OUT = path.join(process.cwd(), "assets/brand/logo-mark.png");
 
 async function run() {
   const image = sharp(SRC);

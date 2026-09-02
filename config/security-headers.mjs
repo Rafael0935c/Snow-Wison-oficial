@@ -36,6 +36,15 @@ export function buildSecurityHeaders({ isDev = false } = {}) {
     // domínio — mitiga clickjacking (um overlay invisível sobre o botão
     // de WhatsApp, por exemplo).
     { key: "X-Frame-Options", value: "DENY" },
+    // Faz o navegador lembrar, por um ano, que este site é só HTTPS — depois
+    // da primeira visita segura, ele nem tenta HTTP. Complementa o
+    // upgrade-insecure-requests da CSP, que cobre apenas os recursos da
+    // página, não a navegação inicial. Sem "preload": isso é um compromisso
+    // irreversível numa lista global, inadequado para um domínio provisório.
+    {
+      key: "Strict-Transport-Security",
+      value: "max-age=31536000; includeSubDomains",
+    },
     // Impede o navegador de tentar "adivinhar" o tipo de um arquivo
     // servido, o que pode ser explorado para rodar script disfarçado
     // de imagem/texto.

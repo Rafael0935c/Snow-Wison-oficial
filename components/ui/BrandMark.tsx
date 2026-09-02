@@ -4,7 +4,7 @@ import Image from "next/image";
 // demanda — o arquivo vai para o visitante do jeito que está aqui.
 // O PNG continua existindo: é ele que os geradores de ícone e da imagem
 // de compartilhamento leem em tempo de build.
-import logoMark from "@/public/brand/logo-mark.webp";
+import logoMark from "@/assets/brand/logo-mark.webp";
 
 type BrandMarkProps = {
   size?: number;
@@ -14,7 +14,7 @@ type BrandMarkProps = {
 };
 
 // Fonte única do símbolo da marca. Trocar por um SVG vetorial real
-// exige mudar apenas o import acima — ver /public/brand/README.md.
+// exige mudar apenas o import acima — ver /assets/brand/README.md.
 export function BrandMark({
   size = 40,
   glow = false,

@@ -49,7 +49,7 @@ um número inventado. Ver `PENDENCIAS.md`.
   siteConfig.ts  WhatsApp, Instagram, URLs — dados pendentes ficam vazios
   fonts.ts       Sora / Manrope / Space Mono via next/font
   jsonLd.ts      dados estruturados (schema.org)
-/public/brand    assets de marca — ver README.md dentro dessa pasta
+/assets/brand    assets de marca (fora de public/ de propósito — ver README.md lá dentro)
 ```
 
 ## Editando o conteúdo do site
@@ -133,7 +133,7 @@ professores estiverem definidos, adicionar os perfis diretamente em
 
 ## Assets de marca
 
-Ver [`public/brand/README.md`](public/brand/README.md) — documenta a
+Ver [`assets/brand/README.md`](assets/brand/README.md) — documenta a
 origem dos arquivos recebidos, o problema de arquivos `.svg` que na
 verdade são raster, e a ocorrência do texto "NORVEN" em um dos arquivos
 do lote original (não utilizado no site).

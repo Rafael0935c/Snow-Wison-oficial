@@ -38,7 +38,7 @@ export function MobileNav() {
   }, [open]);
 
   return (
-    <div className="md:hidden">
+    <div className="lg:hidden">
       <button
         ref={triggerRef}
         type="button"
@@ -80,7 +80,7 @@ export function MobileNav() {
                 href={link.href}
                 ref={index === 0 ? firstLinkRef : undefined}
                 onClick={() => setOpen(false)}
-                className={`font-display text-2xl ${
+                className={`py-2 font-display text-2xl ${
                   pathname === link.href
                     ? "text-ivory underline decoration-blue-soft underline-offset-8"
                     : "text-ivory/70"
