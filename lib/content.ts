@@ -174,7 +174,7 @@ export const sobre = {
     note: "Para alguns desses objetivos — como viagens ou preparação gramatical — a Snow Wison conta com programas próprios, com materiais específicos desenvolvidos para aquele foco.",
   },
   provaSocial: {
-    number: "+50",
+    number: "+60",
     label: "alunos atendidos",
     cta: "Ver resultados",
   },
@@ -316,7 +316,7 @@ export const resultados = {
       "Os números e depoimentos abaixo refletem o que já foi construído com nossos alunos — e o que ainda está em construção.",
   },
   numero: {
-    value: "+50",
+    value: "+60",
     label: "alunos atendidos",
   },
 } as const;
