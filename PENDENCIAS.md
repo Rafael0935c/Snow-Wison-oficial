@@ -36,6 +36,25 @@ Decisão registrada aqui porque foi um trade-off deliberado:
   páginas do site (Home, Sobre, Metodologia, Modalidades, Resultados,
   FAQ, Diagnóstico), envio ao Sentry funcionando.
 
+## Dependências (out/2026)
+
+`npm audit` voltou a acusar problemas (em setembro dava 0): 11, sendo 1
+crítico. Alertas novos publicados no período, não mudança no projeto.
+
+- **Crítico, corrigido:** `next` 16.3.2 → **16.4.2** (execução remota de
+  código em servidores Next rodando no Windows). Em produção não se
+  aplicava — o site é estático, sem servidor Next. Mas o `npm run dev`
+  roda no Windows e fica acessível na rede local, então valia para a
+  máquina de desenvolvimento. `eslint-config-next` acompanhou a versão.
+- `sharp` e dependências indiretas: corrigidos com `npm audit fix`.
+- **Restam 5 "high", aceitos conscientemente:** todos na cadeia do plugin
+  de lint (`eslint-config-next → @next/eslint-plugin-next → fast-glob →
+  micromatch → braces`). O plugin trava `fast-glob` numa versão exata. Só
+  roda quando alguém executa o lint localmente — não entra no build nem
+  chega ao visitante; o risco é travar o linter com um padrão malicioso.
+  A única "correção" do npm é rebaixar para o Next 14. Reavaliar quando o
+  Next publicar o plugin com `fast-glob` atualizado.
+
 ## Desempenho na abertura (out/2026)
 
 Queixa: "o site trava ao abrir". Medido no Lighthouse (celular, CPU 4×
