@@ -106,12 +106,11 @@ Links de WhatsApp: 62 em 7 páginas, todos com o número correto,
 `target=_blank` + `rel="noopener noreferrer"`, mensagem de rastreio
 preservada na LP.
 
-**Lacuna que não fecha em código:** `http://` responde 200 em vez de
-redirecionar para `https://`. Num Worker só de arquivos estáticos não
-há onde fazer esse redirect. Quando o domínio próprio estiver na
-Cloudflare, ligar **SSL/TLS → Edge Certificates → Always Use HTTPS**.
-Até lá, o HSTS cobre todo visitante a partir da segunda visita, e a CSP
-(`upgrade-insecure-requests`) cobre os recursos da página.
+**Lacuna de HTTP: resolvida (out/2026)** com o domínio próprio. Verificado
+em `snowwison.com`: `http://` responde 301 para `https://`, `www` responde
+301 para o domínio principal, e o HSTS está ativo. O endereço
+`.workers.dev` continua sem esse redirecionamento, mas não é mais o
+endereço oficial (o canonical de todas as páginas aponta para o domínio).
 
 **Peso do JavaScript:** 299 KB comprimido, dos quais ~129 KB são o SDK
 do Sentry. Para um site estático sem formulário, é o maior item da
