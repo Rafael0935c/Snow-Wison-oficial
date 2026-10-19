@@ -140,6 +140,21 @@ origem dos arquivos recebidos, o problema de arquivos `.svg` que na
 verdade são raster, e a ocorrência do texto "NORVEN" em um dos arquivos
 do lote original (não utilizado no site).
 
+### Ícones
+
+O `favicon.ico` (48 e 32 px), o `/icon` (192 px) e o ícone de 512 px do
+manifest saem todos do logo, por um script só. Se o logo mudar, rode:
+
+```bash
+node scripts/make-icons.mjs
+```
+
+e faça commit dos três arquivos gerados: `app/favicon.ico`,
+`assets/brand/icon-192.png` e `public/icon-512.png`. Não edite o
+`app/icon.tsx` para mudar o desenho: ele só entrega o PNG pronto.
+O `apple-icon` (180 px, tela inicial do iPhone) continua separado, em
+`app/apple-icon.tsx`.
+
 ## Publicação
 
 O projeto builda de duas formas, e as duas ficam vivas de propósito —
