@@ -6,10 +6,10 @@ const path = require("path");
  * 9:16, usando o símbolo da marca sobre o fundo institucional.
  *
  * Uso:
- *   node scripts/make-video-poster.js public/videos/depoimento-1-capa.jpg
+ *   node scripts/make-video-poster.js public/videos/capa-depoimento.jpg
  *   node scripts/make-video-poster.js <saida.jpg> "OUTRO RÓTULO"
  */
-const OUT = process.argv[2] || "public/videos/depoimento-1-capa.jpg";
+const OUT = process.argv[2] || "public/videos/capa-depoimento.jpg";
 const LABEL = process.argv[3] || "DEPOIMENTO";
 
 const W = 720;

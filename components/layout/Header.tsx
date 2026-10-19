@@ -35,7 +35,7 @@ export function Header() {
           className="-m-2 flex min-h-11 min-w-11 items-center gap-3 p-2"
           aria-label={`${brand.wordmark} ${brand.wordmarkSuffix} — início`}
         >
-          <BrandMark size={32} />
+          <BrandMark size={32} eager />
         </Link>
 
         <nav

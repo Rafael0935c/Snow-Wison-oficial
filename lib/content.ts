@@ -413,13 +413,24 @@ export const testimonials: Testimonial[] = [
     // para H.264 720p — HEVC não toca em Chrome/Firefox.
     // Uso de imagem autorizado pela aluna.
     videoUrl: "/videos/depoimento-1.mp4",
-    photoUrl: "/videos/depoimento-1-capa.jpg",
+    photoUrl: "/videos/capa-depoimento.jpg",
   },
   {
     id: "t12",
     name: "Lucas",
     role: "Aluno Premium",
     quote: "Olá! Foi ótimo, professor dedicado e paciente.",
+  },
+  {
+    id: "t13",
+    // PENDENTE — nome e modalidade. O vídeo não traz legenda nem nome
+    // na tela, então não dá para identificar o aluno pela imagem; não
+    // preencher por dedução. Enquanto vazio, o vídeo aparece sem legenda
+    // e não gera bolha de texto (não há citação).
+    // Recebido do WhatsApp em H.264 800x1440 (20 MB) e recomprimido para
+    // 720p (1,6 MB).
+    videoUrl: "/videos/depoimento-2.mp4",
+    photoUrl: "/videos/capa-depoimento.jpg",
   },
 ];
 

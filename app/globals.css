@@ -124,11 +124,35 @@
   );
 }
 
+/* Entrada do primeiro bloco de cada página — ver components/ui/Enter.tsx.
+   Só opacity/transform: o navegador anima na GPU, sem passar pela thread
+   principal, e começa no primeiro quadro, sem esperar JavaScript. */
+/* Começa em 0.01, não em 0: o Chrome ignora para o LCP (métrica que o
+   Google usa para ranquear) elementos pintados pela primeira vez com
+   opacidade exatamente 0 — e, como esta animação roda na GPU, o elemento
+   não é repintado quando aparece. Com 0, a landing page saía sem LCP
+   nenhum. 0.01 é invisível ao olho e já conta como conteúdo pintado. */
+@keyframes enter {
+  from {
+    opacity: 0.01;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.enter {
+  animation: enter 0.9s var(--ease-brand) both;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.001ms !important;
+    animation-delay: 0s !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;

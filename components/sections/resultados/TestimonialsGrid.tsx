@@ -36,11 +36,19 @@ export function TestimonialsGrid() {
       )}
 
       <div className="columns-1 gap-8 sm:columns-2 lg:columns-3">
-        {testimonials.map((testimonial, index) => (
-          <Reveal key={testimonial.id} delay={(index % 3) * 0.08} variant="quiet">
-            <WhatsAppBubble testimonial={testimonial} />
-          </Reveal>
-        ))}
+        {/* Só quem tem citação vira bolha — depoimentos apenas em vídeo
+            gerariam uma bolha vazia. */}
+        {testimonials
+          .filter((t) => t.quote)
+          .map((testimonial, index) => (
+            <Reveal
+              key={testimonial.id}
+              delay={(index % 3) * 0.08}
+              variant="quiet"
+            >
+              <WhatsAppBubble testimonial={testimonial} />
+            </Reveal>
+          ))}
       </div>
     </section>
   );

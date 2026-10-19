@@ -9,7 +9,13 @@ import logoMark from "@/assets/brand/logo-mark.webp";
 type BrandMarkProps = {
   size?: number;
   glow?: boolean;
-  priority?: boolean;
+  /**
+   * Para logos visíveis sem rolar a página (cabeçalho, topo das páginas).
+   * O padrão do next/image é carregar sob demanda (lazy), o que adia
+   * justamente a imagem que aparece primeiro. No Next 16, `priority` foi
+   * descontinuado; a recomendação é loading="eager" + fetchPriority="high".
+   */
+  eager?: boolean;
   className?: string;
 };
 
@@ -18,7 +24,7 @@ type BrandMarkProps = {
 export function BrandMark({
   size = 40,
   glow = false,
-  priority = false,
+  eager = false,
   className = "",
 }: BrandMarkProps) {
   return (
@@ -26,7 +32,8 @@ export function BrandMark({
       src={logoMark}
       alt="Snow Wison Idiomas"
       height={size}
-      priority={priority}
+      loading={eager ? "eager" : "lazy"}
+      fetchPriority={eager ? "high" : undefined}
       className={[
         "w-auto",
         glow &&

@@ -1,6 +1,5 @@
 "use client";
 
-import * as Sentry from "@sentry/nextjs";
 import { useEffect } from "react";
 
 export default function GlobalError({
@@ -9,7 +8,9 @@ export default function GlobalError({
   error: Error & { digest?: string };
 }) {
   useEffect(() => {
-    Sentry.captureException(error);
+    // Import dinâmico: um import estático aqui puxaria o SDK inteiro para o
+    // pacote inicial de toda página, mesmo sem erro nenhum.
+    void import("@/lib/sentryClient").then((m) => m.captureException(error));
   }, [error]);
 
   return (

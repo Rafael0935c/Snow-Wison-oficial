@@ -20,6 +20,7 @@ type StructuralRailProps = {
 // para o tamanho desta página) é recalculada a cada frame throttled via
 // requestAnimationFrame, então nunca fica desatualizada.
 export function StructuralRail({ nodes }: StructuralRailProps) {
+  const rootRef = useRef<HTMLDivElement>(null);
   const fillRef = useRef<HTMLDivElement>(null);
   const nodeRefs = useRef<(HTMLDivElement | null)[]>([]);
   const frame = useRef<number | null>(null);
@@ -46,6 +47,11 @@ export function StructuralRail({ nodes }: StructuralRailProps) {
         el.style.top = `${top}%`;
         el.dataset.active = progress >= top - 2 ? "true" : "false";
       });
+
+      // Só aparece depois de posicionado: antes disso (HTML do servidor,
+      // ainda sem JS) os marcadores ficam empilhados no topo e os números
+      // sobrepostos viram um borrão.
+      if (rootRef.current) rootRef.current.dataset.ready = "true";
     }
 
     function onScroll() {
@@ -68,8 +74,10 @@ export function StructuralRail({ nodes }: StructuralRailProps) {
 
   return (
     <div
+      ref={rootRef}
       aria-hidden="true"
-      className="pointer-events-none fixed left-10 top-0 z-20 hidden h-dvh lg:block"
+      data-ready="false"
+      className="pointer-events-none fixed left-10 top-0 z-20 hidden h-dvh opacity-0 transition-opacity duration-700 data-[ready=true]:opacity-100 lg:block"
     >
       <div className="relative h-full w-px bg-line-strong">
         <div

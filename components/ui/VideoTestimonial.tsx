@@ -39,19 +39,32 @@ export function VideoTestimonial({
         disablePictureInPicture
         playsInline
         preload="metadata"
+        aria-label={
+          testimonial.name
+            ? `Depoimento em vídeo de ${testimonial.name}`
+            : "Depoimento em vídeo de aluno da Snow Wison"
+        }
         onEnded={(event) => event.currentTarget.load()}
         className="aspect-[9/16] w-full rounded-sm bg-navy object-cover shadow-[0_12px_40px_rgba(0,0,0,0.35)]"
       >
         Seu navegador não consegue exibir este vídeo.
       </video>
-      <figcaption className="mt-4 text-center">
-        <p className="font-display text-sm font-semibold text-ivory">
-          {testimonial.name}
-        </p>
-        <p className="mt-0.5 font-utility text-[0.65rem] uppercase tracking-[0.1em] text-blue-soft">
-          {testimonial.role}
-        </p>
-      </figcaption>
+      {/* Sem nome/modalidade confirmados, não há legenda — melhor nada do
+          que uma legenda vazia ou inventada. */}
+      {(testimonial.name || testimonial.role) && (
+        <figcaption className="mt-4 text-center">
+          {testimonial.name && (
+            <p className="font-display text-sm font-semibold text-ivory">
+              {testimonial.name}
+            </p>
+          )}
+          {testimonial.role && (
+            <p className="mt-0.5 font-utility text-[0.65rem] uppercase tracking-[0.1em] text-blue-soft">
+              {testimonial.role}
+            </p>
+          )}
+        </figcaption>
+      )}
     </figure>
   );
 }

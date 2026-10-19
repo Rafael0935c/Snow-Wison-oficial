@@ -10,7 +10,7 @@ type RevealProps = {
   delay?: number;
   className?: string;
   /**
-   * `display` — entrada cinematográfica (desfoque + escala), para títulos
+   * `display` — entrada mais ampla (deslocamento maior + escala), para títulos
    * e blocos de destaque. `quiet` — deslocamento curto, para itens de
    * lista em sequência, onde um movimento longo vira ruído repetido.
    */
@@ -22,15 +22,15 @@ const EASE_BRAND = [0.16, 1, 0.3, 1] as const;
 // Movimento diferenciado por papel do elemento: um título não deve
 // entrar igual a um item de lista. É o que separa uma página com
 // animação de uma página coreografada.
-// `filter` aparece só na variante que realmente desfoca. Um
-// `blur(0px)` inerte ainda faz o navegador tratar o elemento como
-// candidato a camada de composição própria — multiplicado por dezenas
-// de blocos, é exatamente o tipo de custo invisível que deixa uma
-// página pesada sem motivo.
+// Só opacity e transform (y/scale), de propósito. O Lighthouse sinalizou
+// o desfoque (`filter: blur`) que existia na variante `display` como
+// "animação não composta": filtro não roda na GPU, então cada quadro da
+// entrada era recalculado na thread principal — perceptível como travada
+// no celular. opacity/transform são animados pelo compositor.
 const variants = {
   display: {
-    hidden: { opacity: 0, y: 44, filter: "blur(5px)", scale: 0.992 },
-    shown: { opacity: 1, y: 0, filter: "blur(0px)", scale: 1 },
+    hidden: { opacity: 0, y: 44, scale: 0.985 },
+    shown: { opacity: 1, y: 0, scale: 1 },
     duration: 1.25,
   },
   default: {

@@ -74,7 +74,7 @@ export const testimonials: Testimonial[] = [
     role: "Aluno(a) Premium/Plus/Economic/Unique",
     quote: "Trecho do depoimento.",
     videoUrl: "/videos/depoimento-2.mp4",        // opcional
-    photoUrl: "/videos/depoimento-2-capa.jpg",   // capa do vídeo, opcional
+    photoUrl: "/videos/capa-depoimento.jpg",     // capa da marca, a mesma para todos
   },
   // ...
 ];
@@ -112,12 +112,14 @@ node -e "console.log(require('ffmpeg-static'))"   # caminho do binário
   -movflags +faststart \
   public/videos/depoimento-N.mp4
 
-# capa: escolha um segundo em que a pessoa esteja com o rosto composto
-<ffmpeg> -ss 42 -i public/videos/depoimento-N.mp4 -frames:v 1 \
-  -vf "scale=540:-2" -q:v 3 public/videos/depoimento-N-capa.jpg
-
 rm -rf node_modules/ffmpeg-static   # o binário não fica no projeto
 ```
+
+**Capa:** todos os vídeos usam a mesma, `/videos/capa-depoimento.jpg` (símbolo
+da marca + "DEPOIMENTO", gerada por `scripts/make-video-poster.js`). Não use
+um quadro do vídeo: a capa é o que fica na página antes do play e depois
+do fim — a ideia é o rosto do aluno não ficar exposto parado na tela. E
+sendo um arquivo só, o navegador baixa uma vez para todos os vídeos.
 
 `-movflags +faststart` faz o vídeo começar a tocar antes de baixar por
 completo. O player usa `preload="metadata"`, então o arquivo inteiro só

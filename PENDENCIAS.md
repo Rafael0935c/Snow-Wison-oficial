@@ -36,6 +36,31 @@ Decisão registrada aqui porque foi um trade-off deliberado:
   páginas do site (Home, Sobre, Metodologia, Modalidades, Resultados,
   FAQ, Diagnóstico), envio ao Sentry funcionando.
 
+## Desempenho na abertura (out/2026)
+
+Queixa: "o site trava ao abrir". Medido no Lighthouse (celular, CPU 4×
+mais lenta): o conteúdo do topo já tinha chegado, mas ficava **invisível
+por 3,4 s** esperando o JavaScript para disparar a animação de entrada.
+
+- Topo de cada página (Home, LP, páginas internas) agora entra com
+  animação **CSS pura** (`components/ui/Enter.tsx`): começa no primeiro
+  quadro, sem JS. Atraso entre 1ª pintura e conteúdo principal (observado):
+  1.300 ms → 0 ms. Regra para o futuro: o **primeiro bloco** de uma página
+  nova usa `<Enter>`; `<Reveal>` (Framer Motion) só abaixo da dobra.
+- Removido o desfoque (`filter: blur`) das entradas de títulos: o
+  Lighthouse o apontou como animação que não roda na GPU.
+- **Sentry adiado**: carrega depois da página abrir, em tempo ocioso, via
+  `lib/sentryClient.ts`. Saiu do pacote inicial (era ~600 ms de execução
+  no celular). Troca consciente: erros dos primeiros segundos, antes do
+  Sentry iniciar, não são registrados; e saiu o tracing de performance.
+- `priority` do next/image está **descontinuado no Next 16** — trocado
+  por `loading="eager"` + `fetchPriority="high"` nos logos do topo.
+
+Resultado (Lighthouse celular, home): nota 77 → 87, bloqueio da thread
+277 → 178 ms, topo legível ~3,7 s → ~0,75 s. O LCP *simulado* continua
+alto (~3,6 s) por uma superestimativa conhecida do modelo do Lighthouse;
+o *observado* passou a coincidir com a primeira pintura.
+
 ## Revisão de segurança e dispositivos (set/2026)
 
 Auditoria completa do site publicado. Corrigido em código:
@@ -148,6 +173,9 @@ acesso é exclusivamente pelo link do anúncio.
 
 Pendente nesta LP:
 
+- [ ] **Nome e modalidade do 2º depoimento em vídeo** (`t13` em
+      `lib/content.ts`). O vídeo não tem legenda nem nome na tela, então
+      está no ar sem legenda. Confirmar também o uso de imagem autorizado.
 - [x] ~~Vídeos de depoimento~~ — o primeiro está no ar: Maria Clara
       (Aluna Premium), com uso de imagem autorizado por ela. Aparece na
       LP e em `/resultados`. Para adicionar outros, basta preencher
