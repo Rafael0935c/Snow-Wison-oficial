@@ -10,11 +10,10 @@
 export const siteConfig = {
   name: "Snow Wison Idiomas",
   shortName: "Snow Wison",
-  // TROCAR quando o domínio próprio estiver ativo — é a URL usada em
-  // canonical, Open Graph, sitemap e JSON-LD.
-  url:
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    "https://snow-wison-oficial.levelupenglish-ofc.workers.dev",
+  // Domínio próprio. É a URL usada em canonical, Open Graph, sitemap,
+  // robots e JSON-LD. O endereço .workers.dev continua respondendo, mas
+  // aponta para cá como versão oficial.
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://snowwison.com",
   title: "Snow Wison Idiomas | Inglês Personalizado e Aulas ao Vivo",
   description:
     "Escola premium de inglês 100% online e ao vivo. Conteúdo estruturado e aplicação personalizada para o seu objetivo. Agende seu diagnóstico.",

@@ -28,7 +28,7 @@ Crie um arquivo `.env.local` na raiz (opcional em desenvolvimento):
 
 ```bash
 NEXT_PUBLIC_WHATSAPP=5511999999999   # número da Snow Wison, formato internacional, só dígitos
-NEXT_PUBLIC_SITE_URL=https://snowwisonidiomas.com.br
+NEXT_PUBLIC_SITE_URL=https://snowwison.com
 ```
 
 Sem `NEXT_PUBLIC_WHATSAPP` configurado, os botões de WhatsApp do site

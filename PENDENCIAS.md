@@ -126,8 +126,8 @@ primeira coisa a reconsiderar.
       funcionando. **Importante:** ao publicar em produção (Vercel ou
       outro host), configurar essa mesma variável de ambiente lá — o
       `.env.local` não é enviado no deploy.
-- [ ] **URL definitiva do domínio** — usada em metadata, Open Graph,
-      sitemap e JSON-LD. Configurar em `NEXT_PUBLIC_SITE_URL`.
+- [x] ~~URL definitiva do domínio~~ — `snowwison.com`, registrado em
+      out/2026 já na Cloudflare. Configurado em `lib/siteConfig.ts`.
 - [ ] **Logo em vetor real** — os arquivos recebidos são raster (PNG/JPEG)
       disfarçados de `.svg`. Ver `assets/brand/README.md` para o
       detalhamento completo, incluindo a ocorrência do texto "NORVEN" em
@@ -181,7 +181,7 @@ Funil de objetivo único, isolado do site institucional: sem menu, sem
 links de saída, não linkada em lugar nenhum e fora do `sitemap.xml`. O
 acesso é exclusivamente pelo link do anúncio.
 
-- **URL para usar no anúncio**: `https://SEU-DOMINIO/diagnostico`
+- **URL para usar no anúncio**: `https://snowwison.com/diagnostico`
 - **Rastreio de origem**: os CTAs da LP usam uma mensagem de WhatsApp
   própria ("Vim pelo anúncio...", em `siteConfig.whatsappMessageLp`), o
   que permite separar leads de anúncio dos leads do site.
