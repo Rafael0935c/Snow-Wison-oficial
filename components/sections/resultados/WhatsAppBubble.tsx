@@ -3,6 +3,8 @@ import type { Testimonial } from "@/lib/content";
 
 type WhatsAppBubbleProps = {
   testimonial: Testimonial;
+  /** O padrão (`mb-8`) é o espaçamento da grade em colunas de /resultados. */
+  className?: string;
 };
 
 // Formato de bolha de chat (canto sem raio para simular o "rabinho"),
@@ -10,9 +12,12 @@ type WhatsAppBubbleProps = {
 // pelo guia de identidade visual. Os dois tiques de leitura em azul são
 // um aceno ao original (no WhatsApp de verdade, mensagens lidas também
 // ficam azuis).
-export function WhatsAppBubble({ testimonial }: WhatsAppBubbleProps) {
+export function WhatsAppBubble({
+  testimonial,
+  className = "mb-8",
+}: WhatsAppBubbleProps) {
   return (
-    <div className="mb-8 break-inside-avoid">
+    <div className={`break-inside-avoid ${className}`}>
       <div className="relative rounded-2xl rounded-bl-sm bg-navy-2 px-5 py-4 shadow-[0_8px_24px_rgba(0,0,0,0.28)]">
         <p className="leading-[1.6] text-ivory/85">{testimonial.quote}</p>
         <div className="mt-2 flex justify-end">

@@ -3,6 +3,8 @@ import { Reveal } from "@/components/ui/Reveal";
 import { WhatsAppCTA } from "@/components/ui/WhatsAppCTA";
 
 type ModalidadeBlockProps = {
+  /** Âncora — os cartões da home linkam para /modalidades#<id>. */
+  id: string;
   tag: string;
   name: string;
   paragraph: string;
@@ -12,6 +14,7 @@ type ModalidadeBlockProps = {
 };
 
 export function ModalidadeBlock({
+  id,
   tag,
   name,
   paragraph,
@@ -19,8 +22,13 @@ export function ModalidadeBlock({
   cta,
   reverse = false,
 }: ModalidadeBlockProps) {
+  // scroll-mt: sem ele, ao chegar pela âncora o cabeçalho fixo cobre o
+  // nome da modalidade.
   return (
-    <div className="border-t border-line py-16 first:border-t-0 first:pt-0">
+    <div
+      id={id}
+      className="scroll-mt-24 border-t border-line py-16 first:border-t-0 first:pt-0"
+    >
       <div
         className={`flex flex-col gap-10 lg:gap-16 ${
           reverse ? "lg:flex-row-reverse" : "lg:flex-row"

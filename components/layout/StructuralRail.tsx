@@ -13,7 +13,9 @@ type StructuralRailProps = {
 
 // Elemento de assinatura da marca (§2.5): a linha se desenha conforme
 // o scroll avança pela Home; os nós marcam a posição real de cada
-// seção no total da página. Visível apenas em lg+ — nunca no mobile.
+// seção no total da página. Só aparece a partir de 1360px: abaixo disso
+// a margem lateral do conteúdo encolhe para 40px — exatamente onde a
+// linha fica — e ela passava por cima do texto.
 //
 // Atualiza o DOM direto via refs (sem setState) para não disparar
 // re-render do React a cada frame de scroll — a geometria em si (barata
@@ -77,7 +79,7 @@ export function StructuralRail({ nodes }: StructuralRailProps) {
       ref={rootRef}
       aria-hidden="true"
       data-ready="false"
-      className="pointer-events-none fixed left-10 top-0 z-20 hidden h-dvh opacity-0 transition-opacity duration-700 data-[ready=true]:opacity-100 lg:block"
+      className="pointer-events-none fixed left-10 top-0 z-20 hidden h-dvh opacity-0 transition-opacity duration-700 data-[ready=true]:opacity-100 min-[1360px]:block"
     >
       <div className="relative h-full w-px bg-line-strong">
         <div

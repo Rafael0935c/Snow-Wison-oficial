@@ -134,13 +134,12 @@ primeira coisa a reconsiderar.
 
 ## Conteúdo pendente (hoje representado por `Placeholder` no site)
 
-- [x] ~~Depoimentos~~ — 11 depoimentos reais coletados via WhatsApp,
-      revisados só na gramática/ortografia (conteúdo e sentido são
-      exatamente os enviados pelos alunos). Exibidos em `/resultados`
-      como bolhas de chat (`components/sections/resultados/WhatsAppBubble.tsx`).
-      Nenhum tem foto/vídeo — se o cliente enviar, dá pra adicionar
-      depois nos campos `photoUrl`/`videoUrl` do array `testimonials`
-      em `lib/content.ts`.
+- [x] ~~Depoimentos~~ — 12 depoimentos reais em texto, coletados via
+      WhatsApp e revisados só na gramática/ortografia (conteúdo e sentido
+      são exatamente os enviados pelos alunos), e 2 em vídeo. Todos
+      aparecem em `/resultados` e na landing page; a home mostra uma
+      seleção (1 vídeo + 3 mensagens), escolhida pelos ids no topo de
+      `components/sections/ResultadosTeaser.tsx`.
 - [ ] **Perfis de professores** — a escola ainda está em processo de
       recrutamento, então a seção "Professores" em `/metodologia` hoje
       mostra só os critérios de seleção (graduação, mestrado, experiência
@@ -148,11 +147,10 @@ primeira coisa a reconsiderar.
       Quando a equipe estiver fechada, adicionar nome/foto/bio em
       `components/sections/metodologia/Professores.tsx`.
 - [x] ~~Foto cinematográfica do pinguim~~ — resolvido por decisão do
-      cliente: em vez de foto, a seção de "respiro atmosférico" da Home
-      usa o próprio símbolo como marca d'água atmosférica em opacidade
-      baixa (uso permitido pelo §2.6 do briefing). Se no futuro surgir
-      uma foto real do pinguim, é só trocar em
-      `components/sections/RespiroAtmosferico.tsx`.
+      cliente: o site usa o próprio símbolo, nunca foto nem mascote. A
+      seção de "respiro atmosférico" da Home, que era onde a foto
+      entraria, saiu na reorganização da home (outubro/2026) para
+      encurtar a rolagem; a frase dela passou para a seção de resultados.
 - [x] ~~Resposta de "Quanto tempo dura cada aula?"~~ no FAQ — respondido:
       tempo e quantidade variam por objetivo, definidos na reunião de
       diagnóstico.

@@ -58,6 +58,10 @@ um número inventado. Ver `PENDENCIAS.md`.
 componente tem strings de copy hardcoded — para alterar qualquer texto
 visível (títulos, parágrafos, listas, microcopy), edite esse arquivo.
 
+O número de alunos atendidos ("+60") é uma constante só,
+`ALUNOS_ATENDIDOS`, no topo do arquivo. Ela alimenta o topo da home,
+`/sobre` e `/resultados` — atualize ali e as três páginas mudam juntas.
+
 ### Depoimentos
 
 Em `lib/content.ts`, o array `testimonials` está preenchido com
@@ -81,7 +85,9 @@ export const testimonials: Testimonial[] = [
 ```
 
 Quem tiver `videoUrl` aparece em destaque, acima da grade de bolhas —
-tanto em `/resultados` quanto na landing page. Se o array ficar
+tanto em `/resultados` quanto na landing page. A home mostra só uma
+seleção (um vídeo e três mensagens), definida pelos ids `VIDEO_ID` e
+`QUOTE_IDS` no topo de `components/sections/ResultadosTeaser.tsx`. Se o array ficar
 totalmente vazio (todos sem `quote`), a seção volta a mostrar um
 `Placeholder` de "conteúdo pendente" automaticamente.
 

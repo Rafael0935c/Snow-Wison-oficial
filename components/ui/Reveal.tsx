@@ -45,6 +45,9 @@ const variants = {
   },
 } satisfies Record<RevealVariant, unknown>;
 
+// Com "reduzir movimento" ligado, o bloco aparece no lugar, sem trajeto.
+const INSTANT = { duration: 0 } as const;
+
 export function Reveal({
   children,
   delay = 0,
@@ -54,13 +57,23 @@ export function Reveal({
   const shouldReduceMotion = useReducedMotion();
   const v = variants[variant];
 
+  // `initial` e `whileInView` são sempre os mesmos — só a transição muda.
+  // Antes, com "reduzir movimento" ligado, o componente trocava para
+  // initial={false} e tirava o whileInView. Só que o HTML do servidor já
+  // chega com opacity 0 (o servidor não sabe a preferência do visitante),
+  // e nada mais mandava o bloco aparecer: tudo abaixo do topo da página
+  // ficava invisível para quem usa essa opção de acessibilidade.
   return (
     <motion.div
       className={className}
-      initial={shouldReduceMotion ? false : v.hidden}
-      whileInView={shouldReduceMotion ? undefined : v.shown}
+      initial={v.hidden}
+      whileInView={v.shown}
       viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: v.duration, delay, ease: EASE_BRAND }}
+      transition={
+        shouldReduceMotion
+          ? INSTANT
+          : { duration: v.duration, delay, ease: EASE_BRAND }
+      }
     >
       {children}
     </motion.div>

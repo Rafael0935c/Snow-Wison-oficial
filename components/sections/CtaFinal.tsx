@@ -7,7 +7,7 @@ export function CtaFinal() {
   return (
     <section
       id="cta-final"
-      className="relative overflow-hidden px-6 py-32 lg:px-10 lg:py-48"
+      className="relative overflow-hidden px-6 py-20 lg:px-10 lg:py-32"
     >
       <div
         className="pointer-events-none absolute -bottom-10 -right-10 opacity-[0.08]"

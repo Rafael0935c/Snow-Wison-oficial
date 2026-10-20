@@ -2,6 +2,10 @@
 // hardcoded em componentes ou páginas — edite este arquivo para
 // alterar qualquer conteúdo visível do site.
 
+// Aparece no topo da home, em /sobre e em /resultados. Fica num lugar só
+// para nunca sair um número diferente em cada página quando for atualizado.
+const ALUNOS_ATENDIDOS = "+60";
+
 export const nav = {
   links: [
     { href: "/", label: "Início" },
@@ -41,14 +45,32 @@ export const home = {
       "Escola premium de inglês, 100% online e ao vivo — com conteúdo estruturado e aplicação personalizada para o objetivo de cada aluno.",
     ctaPrimary: "Agendar diagnóstico",
     ctaSecondary: "Conhecer a Snow Wison",
+    // Faixa no pé da primeira tela. Só fatos que o resto do site já
+    // sustenta: nada de selo, nota ou número que não exista.
+    credenciais: [
+      { label: "Resultados", value: `${ALUNOS_ATENDIDOS} alunos atendidos` },
+      { label: "Formato", value: "100% online e ao vivo" },
+      { label: "Método", value: "Começa pelo diagnóstico" },
+      { label: "Professores", value: "Qualificados e treinados" },
+    ],
   },
-  filosofia: {
-    eyebrow: "Estrutura e aplicação",
+  // O título desta seção vem de `resultados.intro.heading`, o mesmo da
+  // página /resultados, para quem clicar em "ver todos" cair no mesmo fio.
+  resultados: {
+    eyebrow: "Resultados",
+    support:
+      "Cada aluno chega de um jeito. O cuidado com o caminho é sempre o mesmo.",
+    note: "Mensagens recebidas no WhatsApp, publicadas com autorização.",
+    cta: "Ver todos os depoimentos",
+  },
+  // Os quatro princípios, os critérios dos professores e a frase das
+  // referências vêm de `metodologia` (página /metodologia). A frase das
+  // referências tem redação fixa — não resumir nem reescrever.
+  metodologia: {
+    eyebrow: "Metodologia",
     heading: "Nem todo objetivo pede o mesmo percurso.",
     statement:
       "Todo aluno recebe a mesma estrutura de conteúdo. Nenhum recebe o mesmo caminho.",
-    paragraph:
-      "Existe uma estrutura de conteúdo, e ela é a mesma para todos. O que muda é a forma como ela chega até você: o ritmo, o foco e os recursos que o professor escolhe usar.",
     equation: [
       { title: "Conteúdo estruturado", note: "a base: o mesmo para todos" },
       {
@@ -57,6 +79,11 @@ export const home = {
       },
     ],
     result: "Experiência Snow Wison",
+    professoresLabel: "Quem ensina",
+    professores:
+      "A Snow Wison trabalha apenas com professores que apresentem alguma destas qualificações. Todos passam por um treinamento interno, alinhado à metodologia da escola.",
+    referenciasLabel: "Referências",
+    cta: "Conhecer a metodologia",
   },
   problema: {
     eyebrow: "O problema",
@@ -73,6 +100,8 @@ export const home = {
   solucao: {
     eyebrow: "A solução",
     heading: "É aqui que a Snow Wison entra.",
+    support:
+      "Antes de qualquer aula, existe uma etapa de entendimento. Você não compra um pacote — você define um objetivo, e a partir dele construímos o caminho.",
     steps: [
       {
         number: "01",
@@ -101,33 +130,37 @@ export const home = {
       },
     ],
   },
-  comoFunciona: {
-    eyebrow: "Como funciona",
-    heading: "Do contato ao resultado.",
-    support:
-      "Antes de qualquer aula, existe uma etapa de entendimento. Você não compra um pacote — você define um objetivo, e a partir dele construímos o caminho.",
-    steps: [
-      "Você entra em contato.",
-      "Conversamos sobre seus objetivos.",
-      "Realizamos uma reunião e diagnóstico.",
-      "Definimos o caminho mais adequado.",
-      "Você começa suas aulas.",
-      "Acompanhamos sua evolução.",
-    ],
-  },
-  atmospheric: {
-    line1: "Cada aluno chega de um jeito.",
-    line2: "O cuidado com o caminho é sempre o mesmo.",
-  },
   modalidadesTeaser: {
     eyebrow: "Modalidades",
     heading: "Quatro formatos. Um mesmo padrão de exigência.",
     note: "A diferença entre elas está na experiência e no nível de personalização — não na qualidade do conteúdo.",
+    // `id` é a âncora do bloco correspondente em /modalidades.
     items: [
-      { tag: "Experiência Premium", name: "Individual" },
-      { tag: "Experiência Plus", name: "Dupla" },
-      { tag: "Experiência Economic", name: "Grupo" },
-      { tag: "Experiência Específica", name: "Unique" },
+      {
+        id: "individual",
+        tag: "Experiência Premium",
+        name: "Individual",
+        description: "Ritmo, foco e aplicação construídos em torno de um aluno só.",
+      },
+      {
+        id: "dupla",
+        tag: "Experiência Plus",
+        name: "Dupla",
+        description: "Interação e acompanhamento, com a mesma estrutura de conteúdo.",
+      },
+      {
+        id: "grupo",
+        tag: "Experiência Economic",
+        name: "Grupo",
+        description: "Ambiente colaborativo, mesmo padrão de conteúdo das demais.",
+      },
+      {
+        id: "unique",
+        tag: "Experiência Específica",
+        name: "Unique",
+        description:
+          "Para objetivo específico, urgência ou prazo curto, com material próprio.",
+      },
     ],
     cta: "Conhecer",
   },
@@ -174,7 +207,7 @@ export const sobre = {
     note: "Para alguns desses objetivos — como viagens ou preparação gramatical — a Snow Wison conta com programas próprios, com materiais específicos desenvolvidos para aquele foco.",
   },
   provaSocial: {
-    number: "+60",
+    number: ALUNOS_ATENDIDOS,
     label: "alunos atendidos",
     cta: "Ver resultados",
   },
@@ -316,7 +349,7 @@ export const resultados = {
       "Os números e depoimentos abaixo refletem o que já foi construído com nossos alunos — e o que ainda está em construção.",
   },
   numero: {
-    value: "+60",
+    value: ALUNOS_ATENDIDOS,
     label: "alunos atendidos",
   },
 } as const;
