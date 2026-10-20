@@ -50,7 +50,7 @@ export function ResultadosTeaser() {
               aria-hidden="true"
             />
           </Link>
-          <p className="mt-6 hidden font-utility text-[0.68rem] leading-[1.6] text-ivory/40 lg:block">
+          <p className="mt-6 hidden font-utility text-[0.68rem] leading-[1.6] text-ivory/55 lg:block">
             {home.resultados.note}
           </p>
         </Reveal>
@@ -80,7 +80,7 @@ export function ResultadosTeaser() {
               </div>
             ))}
           </div>
-          <p className="mt-6 font-utility text-[0.68rem] leading-[1.6] text-ivory/40 lg:hidden">
+          <p className="mt-6 font-utility text-[0.68rem] leading-[1.6] text-ivory/55 lg:hidden">
             {home.resultados.note}
           </p>
         </Reveal>

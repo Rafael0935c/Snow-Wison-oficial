@@ -38,7 +38,7 @@ export function MetodologiaTeaser() {
                 <p className="font-display text-lg font-semibold text-ivory lg:text-xl">
                   {first.title}
                 </p>
-                <p className="mt-1 hidden font-utility text-[0.68rem] uppercase tracking-[0.1em] text-ivory/45 sm:block">
+                <p className="mt-1 hidden font-utility text-[0.68rem] uppercase tracking-[0.1em] text-ivory/55 sm:block">
                   {first.note}
                 </p>
               </div>
@@ -51,7 +51,7 @@ export function MetodologiaTeaser() {
                 <p className="font-display text-lg font-semibold text-ivory lg:text-xl">
                   {second.title}
                 </p>
-                <p className="mt-1 hidden font-utility text-[0.68rem] uppercase tracking-[0.1em] text-ivory/45 sm:block">
+                <p className="mt-1 hidden font-utility text-[0.68rem] uppercase tracking-[0.1em] text-ivory/55 sm:block">
                   {second.note}
                 </p>
               </div>

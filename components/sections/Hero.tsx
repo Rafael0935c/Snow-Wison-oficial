@@ -23,7 +23,7 @@ export function Hero() {
           <span className="font-display text-xl font-extrabold tracking-[0.16em] text-ivory">
             {brand.wordmark}
           </span>
-          <span className="mt-1.5 font-utility text-[0.6rem] tracking-[0.4em] text-ivory/40">
+          <span className="mt-1.5 font-utility text-[0.6rem] tracking-[0.4em] text-ivory/55">
             {brand.wordmarkSuffix}
           </span>
         </Enter>

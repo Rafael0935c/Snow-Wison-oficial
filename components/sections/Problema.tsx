@@ -32,7 +32,7 @@ export function Problema() {
                   {index > 0 && <Divider fade />}
                   <div className="flex items-start gap-4 py-3.5 lg:py-4">
                     <span
-                      className="font-utility text-base leading-[1.45] text-blue-soft/70 lg:text-lg"
+                      className="font-utility text-base leading-[1.45] text-blue-soft/80 lg:text-lg"
                       aria-hidden="true"
                     >
                       /

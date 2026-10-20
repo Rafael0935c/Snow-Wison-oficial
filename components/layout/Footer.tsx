@@ -17,7 +17,7 @@ export function Footer() {
             <BrandMark size={28} />
             <div className="font-display text-sm tracking-[0.16em] text-ivory">
               {brand.wordmark}
-              <span className="ml-2 font-utility text-[0.6rem] tracking-[0.3em] text-ivory/40">
+              <span className="ml-2 font-utility text-[0.6rem] tracking-[0.3em] text-ivory/55">
                 {brand.wordmarkSuffix}
               </span>
             </div>
