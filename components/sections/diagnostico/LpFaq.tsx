@@ -16,7 +16,7 @@ export function LpFaq() {
       </Reveal>
 
       <Reveal delay={0.15} className="mt-14">
-        <FaqAccordion items={[...diagnostico.faq.items]} />
+        <FaqAccordion items={[...diagnostico.faq.items]} headingLevel={3} />
       </Reveal>
     </section>
   );

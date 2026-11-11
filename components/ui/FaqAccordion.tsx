@@ -10,13 +10,20 @@ type FaqAccordionItem = {
 
 type FaqAccordionProps = {
   items: FaqAccordionItem[];
+  /**
+   * Nível de título das perguntas. 2 na página /faq, onde elas ficam logo
+   * abaixo do <h1>; 3 quando o acordeão está dentro de uma seção que já
+   * tem o próprio <h2>, para não pular nem repetir níveis.
+   */
+  headingLevel?: 2 | 3;
 };
 
 // Uma pergunta aberta por vez, com transição de altura via grid-template-rows
 // (funciona melhor que <details> nativo para animar abertura/fechamento).
-export function FaqAccordion({ items }: FaqAccordionProps) {
+export function FaqAccordion({ items, headingLevel = 2 }: FaqAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const baseId = useId();
+  const Heading = headingLevel === 3 ? "h3" : "h2";
 
   return (
     <div className="divide-y divide-line">
@@ -27,7 +34,7 @@ export function FaqAccordion({ items }: FaqAccordionProps) {
 
         return (
           <div key={item.question}>
-            <h2>
+            <Heading>
               <button
                 id={buttonId}
                 type="button"
@@ -46,7 +53,7 @@ export function FaqAccordion({ items }: FaqAccordionProps) {
                   aria-hidden="true"
                 />
               </button>
-            </h2>
+            </Heading>
             <div
               id={panelId}
               role="region"

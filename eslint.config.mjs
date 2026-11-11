@@ -14,6 +14,9 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
     // One-off Node utility scripts (CommonJS, not part of the app).
     "scripts/**",
+    // Material fora do site: criativos de anúncio e referências.
+    "criativos/**",
+    "referência site/**",
   ]),
 ]);
 

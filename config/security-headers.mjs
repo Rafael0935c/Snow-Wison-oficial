@@ -16,12 +16,17 @@ export function buildContentSecurityPolicy({ isDev = false } = {}) {
     // único <script> inline (JSON-LD) e a hidratação do Next.
     // 'unsafe-eval' só em dev: o React precisa de eval() para o Fast
     // Refresh; em produção o React nunca usa eval().
-    `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
+    // static.cloudflareinsights.com: o Cloudflare Web Analytics (sem
+    // cookies) está ligado no domínio e a Cloudflare injeta o script dele
+    // nas páginas. Sem esta liberação, a CSP bloqueava o script, gerava
+    // erro no console e a métrica de visitas não era coletada.
+    `script-src 'self' 'unsafe-inline' https://static.cloudflareinsights.com${isDev ? " 'unsafe-eval'" : ""}`,
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' https: data:",
     "media-src 'self' https:",
     "font-src 'self'",
-    `connect-src 'self' https://*.ingest.us.sentry.io https://*.sentry.io${isDev ? " ws:" : ""}`,
+    // cloudflareinsights.com: para onde o Web Analytics envia as visitas.
+    `connect-src 'self' https://*.ingest.us.sentry.io https://*.sentry.io https://cloudflareinsights.com${isDev ? " ws:" : ""}`,
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",

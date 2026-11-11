@@ -1,0 +1,13 @@
+.next
+out
+node_modules
+coverage
+package-lock.json
+next-env.d.ts
+# gerado no build (scripts/generate-headers.mjs)
+public/_headers
+# material fora do site
+criativos
+referência site
+# documentação escrita à mão
+*.md

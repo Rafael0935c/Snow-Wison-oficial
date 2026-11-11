@@ -147,6 +147,44 @@
   animation: enter 0.9s var(--ease-brand) both;
 }
 
+/* Entrada ao rolar — ver components/ui/Reveal.tsx. Três papéis, com o
+   mesmo movimento que o Framer Motion fazia antes: títulos entram de
+   mais longe e com leve escala, itens de lista entram de perto. Só
+   opacity e transform, que o navegador anima na GPU. */
+.reveal {
+  opacity: 0;
+  transform: translateY(38px);
+  transition-property: opacity, transform;
+  transition-duration: 1.15s;
+  transition-timing-function: var(--ease-brand);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+.reveal-display {
+  transform: translateY(44px) scale(0.985);
+  transition-duration: 1.25s;
+}
+
+.reveal-quiet {
+  transform: translateY(20px);
+  transition-duration: 0.85s;
+}
+
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+/* Com "reduzir movimento", o conteúdo já nasce no lugar — sem esperar o
+   JavaScript observar a rolagem. (Sem JavaScript nenhum, quem resolve é o
+   <noscript> do app/layout.tsx.) */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

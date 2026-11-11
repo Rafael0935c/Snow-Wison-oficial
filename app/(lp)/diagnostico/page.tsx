@@ -15,9 +15,9 @@ import { LpFooter } from "@/components/sections/diagnostico/LpFooter";
 // Google Ads exige que a página de destino seja rastreável.
 export const metadata: Metadata = {
   // `absolute` evita o template do layout raiz duplicar o nome da marca.
-  title: { absolute: "Aula diagnóstica de inglês | Snow Wison Idiomas" },
+  title: { absolute: "Diagnóstico de inglês ao vivo | Snow Wison Idiomas" },
   description:
-    "Você entende quase tudo, mas trava na hora de falar. Agende uma aula diagnóstica e descubra o caminho para o seu objetivo em inglês.",
+    "Você entende quase tudo, mas trava na hora de falar. Agende seu diagnóstico e descubra o caminho para o seu objetivo em inglês.",
   alternates: { canonical: "/diagnostico" },
 };
 

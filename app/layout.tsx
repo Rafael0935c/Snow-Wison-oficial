@@ -3,12 +3,15 @@ import { sora, manrope, spaceMono } from "@/lib/fonts";
 import { siteConfig } from "@/lib/siteConfig";
 import { a11y } from "@/lib/content";
 import { educationalOrganizationJsonLd, serializeJsonLd } from "@/lib/jsonLd";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
-import { WhatsAppFAB } from "@/components/layout/WhatsAppFAB";
 import { Atmosphere } from "@/components/layout/Atmosphere";
-import { SiteChrome } from "@/components/layout/SiteChrome";
 import "./globals.css";
+
+// Layout raiz: só o que vale para TODAS as rotas (documento, fontes,
+// atmosfera de fundo, link de acessibilidade). Cabeçalho, rodapé e botão
+// flutuante do site institucional ficam em app/(site)/layout.tsx; a
+// landing page de anúncios tem o seu próprio, em app/(lp)/layout.tsx.
+// Separar assim faz cada página baixar só o JavaScript que usa — antes, a
+// landing page carregava o código do menu do site sem nunca exibi-lo.
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -64,6 +67,11 @@ export default function RootLayout({
             __html: serializeJsonLd(educationalOrganizationJsonLd),
           }}
         />
+        {/* Sem JavaScript, nada dispararia a entrada dos blocos (.reveal)
+            e eles ficariam invisíveis. */}
+        <noscript>
+          <style>{".reveal{opacity:1!important;transform:none!important}"}</style>
+        </noscript>
       </head>
       <body className="relative flex min-h-full flex-col">
         <a
@@ -73,13 +81,7 @@ export default function RootLayout({
           {a11y.skipLink}
         </a>
         <Atmosphere />
-        <SiteChrome
-          header={<Header />}
-          footer={<Footer />}
-          fab={<WhatsAppFAB />}
-        >
-          {children}
-        </SiteChrome>
+        {children}
       </body>
     </html>
   );

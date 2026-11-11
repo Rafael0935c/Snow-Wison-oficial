@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import type { ReactNode } from "react";
+import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 
 type RevealVariant = "default" | "display" | "quiet";
 
@@ -17,65 +16,67 @@ type RevealProps = {
   variant?: RevealVariant;
 };
 
-const EASE_BRAND = [0.16, 1, 0.3, 1] as const;
+// Um observador só para a página inteira, compartilhado por todos os
+// blocos. Cada bloco que entra na tela ganha `is-revealed` uma única vez
+// e deixa de ser observado.
+let observer: IntersectionObserver | null = null;
 
-// Movimento diferenciado por papel do elemento: um título não deve
-// entrar igual a um item de lista. É o que separa uma página com
-// animação de uma página coreografada.
-// Só opacity e transform (y/scale), de propósito. O Lighthouse sinalizou
-// o desfoque (`filter: blur`) que existia na variante `display` como
-// "animação não composta": filtro não roda na GPU, então cada quadro da
-// entrada era recalculado na thread principal — perceptível como travada
-// no celular. opacity/transform são animados pelo compositor.
-const variants = {
-  display: {
-    hidden: { opacity: 0, y: 44, scale: 0.985 },
-    shown: { opacity: 1, y: 0, scale: 1 },
-    duration: 1.25,
-  },
-  default: {
-    hidden: { opacity: 0, y: 38 },
-    shown: { opacity: 1, y: 0 },
-    duration: 1.15,
-  },
-  quiet: {
-    hidden: { opacity: 0, y: 20 },
-    shown: { opacity: 1, y: 0 },
-    duration: 0.85,
-  },
-} satisfies Record<RevealVariant, unknown>;
+function getObserver() {
+  if (!observer) {
+    observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          entry.target.classList.add("is-revealed");
+          observer?.unobserve(entry.target);
+        }
+      },
+      // Mesma margem de antes: o bloco começa a entrar quando já está
+      // 80px dentro da tela, não no primeiro pixel.
+      { rootMargin: "-80px" }
+    );
+  }
+  return observer;
+}
 
-// Com "reduzir movimento" ligado, o bloco aparece no lugar, sem trajeto.
-const INSTANT = { duration: 0 } as const;
-
+/**
+ * Entrada ao rolar a página. O movimento em si é CSS (`.reveal` em
+ * app/globals.css); aqui só se decide QUANDO ele começa.
+ *
+ * Substitui o Framer Motion, que custava cerca de 40 KB comprimidos de
+ * JavaScript em toda página só para isto. Curva, durações, deslocamentos
+ * e atrasos são os mesmos de antes — o visual não muda.
+ *
+ * "Reduzir movimento" e visitante sem JavaScript são resolvidos no CSS:
+ * nos dois casos o bloco já aparece no lugar, sem depender deste código.
+ */
 export function Reveal({
   children,
   delay = 0,
   className = "",
   variant = "default",
 }: RevealProps) {
-  const shouldReduceMotion = useReducedMotion();
-  const v = variants[variant];
+  const ref = useRef<HTMLDivElement>(null);
 
-  // `initial` e `whileInView` são sempre os mesmos — só a transição muda.
-  // Antes, com "reduzir movimento" ligado, o componente trocava para
-  // initial={false} e tirava o whileInView. Só que o HTML do servidor já
-  // chega com opacity 0 (o servidor não sabe a preferência do visitante),
-  // e nada mais mandava o bloco aparecer: tudo abaixo do topo da página
-  // ficava invisível para quem usa essa opção de acessibilidade.
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const io = getObserver();
+    io.observe(el);
+    return () => io.unobserve(el);
+  }, []);
+
+  const style = delay
+    ? ({ "--reveal-delay": `${delay}s` } as CSSProperties)
+    : undefined;
+
   return (
-    <motion.div
-      className={className}
-      initial={v.hidden}
-      whileInView={v.shown}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={
-        shouldReduceMotion
-          ? INSTANT
-          : { duration: v.duration, delay, ease: EASE_BRAND }
-      }
+    <div
+      ref={ref}
+      className={`reveal reveal-${variant} ${className}`}
+      style={style}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

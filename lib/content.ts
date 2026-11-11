@@ -468,16 +468,16 @@ export const testimonials: Testimonial[] = [
 ];
 
 // Landing page de tráfego pago (/diagnostico). Objetivo único: levar ao
-// WhatsApp para agendar a aula diagnóstica. Não é linkada no menu — só
+// WhatsApp para agendar o diagnóstico. Não é linkada no menu — só
 // acessível pelo link do anúncio. Nenhuma menção a valores, por decisão
 // do cliente e coerência com o resto do site.
 export const diagnostico = {
   hero: {
-    eyebrow: "Aula diagnóstica",
+    eyebrow: "Diagnóstico",
     heading: "Você entende quase tudo. Na hora de falar, trava.",
     paragraph:
       "Você já estudou bastante. O que provavelmente falta é um caminho pensado pra sua situação: a reunião de terça, a viagem de julho, a prova que já tem data marcada.",
-    cta: "Agendar aula diagnóstica",
+    cta: "Agendar diagnóstico",
     microcopy: "Uma conversa no WhatsApp para entender seu objetivo.",
   },
   paraQuem: {
@@ -511,7 +511,7 @@ export const diagnostico = {
   },
   comoFunciona: {
     eyebrow: "Como funciona",
-    heading: "O que acontece na aula diagnóstica.",
+    heading: "O que acontece no diagnóstico.",
     steps: [
       {
         number: "01",
@@ -536,7 +536,7 @@ export const diagnostico = {
   formatos: {
     eyebrow: "Formatos",
     heading: "Qual desses encaixa no seu momento?",
-    note: "Isso é uma das coisas que a aula diagnóstica ajuda a definir.",
+    note: "Isso é uma das coisas que o diagnóstico ajuda a definir.",
     items: [
       {
         tag: "Premium",
@@ -582,14 +582,14 @@ export const diagnostico = {
     heading: "O que costuma travar a decisão.",
     items: [
       {
-        question: "Preciso já saber inglês para fazer a aula diagnóstica?",
+        question: "Preciso já saber inglês para fazer o diagnóstico?",
         answer:
-          "Não precisa. Ela existe justamente pra identificar seu ponto de partida, seja ele qual for. Tem aluno que começou do zero.",
+          "Não precisa. O diagnóstico existe justamente pra identificar seu ponto de partida, seja ele qual for. Tem aluno que começou do zero.",
       },
       {
-        question: "A aula diagnóstica me obriga a fechar alguma coisa?",
+        question: "O diagnóstico me obriga a fechar alguma coisa?",
         answer:
-          "Não obriga. Você sai dela sabendo qual caminho faz sentido pro seu objetivo. A decisão de seguir é sua, com a informação já na mão.",
+          "Não obriga. Você sai dele sabendo qual caminho faz sentido pro seu objetivo. A decisão de seguir é sua, com a informação já na mão.",
       },
       {
         question: "E os valores?",
@@ -607,7 +607,7 @@ export const diagnostico = {
       {
         question: "Quanto tempo dura e quantas aulas são?",
         answer:
-          "Isso varia com o seu objetivo, e é justamente uma das coisas que a aula diagnóstica define.",
+          "Isso varia com o seu objetivo, e é justamente uma das coisas que o diagnóstico define.",
       },
       {
         question: "Já tentei outros cursos e não deu certo. O que muda aqui?",
@@ -621,7 +621,7 @@ export const diagnostico = {
     headingLine2: "É assim que começa.",
     paragraph:
       "Conte seu objetivo, entenda onde você está e saia sabendo o caminho. Sem compromisso de seguir.",
-    cta: "Agendar aula diagnóstica",
+    cta: "Agendar diagnóstico",
     microcopy: "Você fala direto com nossa equipe pelo WhatsApp.",
   },
 } as const;
