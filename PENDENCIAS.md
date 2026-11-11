@@ -174,24 +174,47 @@ quando o cliente confirmar os dados reais.
 
 ## Landing page de tráfego pago (`/diagnostico`)
 
-Funil de objetivo único, isolado do site institucional: sem menu, sem
-links de saída, não linkada em lugar nenhum e fora do `sitemap.xml`. O
-acesso é exclusivamente pelo link do anúncio.
+Funil de objetivo único, isolado do site institucional: o menu só tem
+âncoras da própria página, não há links de saída, não é linkada em lugar
+nenhum e fica fora do `sitemap.xml`. O acesso é pelo link do anúncio.
+Reconstruída em nov/2026 com quiz de diagnóstico (ver "Landing page
+/diagnostico e o quiz" no `README.md`). Decisões do dono em 11/11/2026:
+fica em `/diagnostico`; vídeo só toca quando a pessoa toca no play, sem
+loop; fundo escuro com uma seção em marfim (avaliações), em teste; cantos
+da marca; 3 fontes; HSTS sem preload; voz "nós, da Snow Wison".
 
 - **URL para usar no anúncio**: `https://snowwison.com/diagnostico`
-- **Rastreio de origem**: os CTAs da LP usam uma mensagem de WhatsApp
-  própria ("Vim pelo anúncio...", em `siteConfig.whatsappMessageLp`), o
-  que permite separar leads de anúncio dos leads do site.
+  (ou `?objetivo=viagem` etc. para chegar com o objetivo marcado).
+- **Rastreio de origem**: quem passa pelo quiz manda a mensagem com as
+  respostas e um código `SW-XXXXXX`; os atalhos diretos mandam "Vim pelo
+  site..." (`siteConfig.whatsappMessageLp`).
 - **Indexação**: mantida indexável de propósito — o Google Ads exige que
   a página de destino seja rastreável. Se algum dia quiser tirá-la da
   busca orgânica, adicionar `robots: { index: false }` na metadata da
   página (só depois de confirmar que não quebra a campanha).
+- **Promessa NÃO confirmada:** "se não se adaptar ao professor, a gente
+  troca" não foi confirmada pelo dono — não usar na LP. Os anúncios B e
+  E (`criativos/remarketing-2026-11`, ainda rascunho) usam essa frase e
+  precisam ser revistos antes de publicar.
 
 Pendente nesta LP:
 
+- [ ] **Razão social, CNPJ e e-mail de contato** — sem eles não há
+      Política de Privacidade, e sem a política o envio do lead para o
+      servidor/CRM (etapa 4) não vai ao ar. Hoje o quiz não envia dado
+      nenhum para o servidor: só monta a mensagem e abre o WhatsApp.
+- [ ] **Instagram oficial** — entra no rodapé da LP.
+- [ ] **Legendas (.vtt) dos vídeos de depoimento** — exigência de
+      acessibilidade (WCAG). Precisa da transcrição de cada vídeo.
+- [ ] **Fotos, nomes, papel e uma frase dos professores**, com
+      autorização de imagem — hoje a seção mostra só os critérios.
+- [ ] **Vídeos curtos de aula**, com autorização de quem aparece — a
+      seção "Veja as aulas" fica oculta até lá.
+- [ ] **Prints originais dos depoimentos** — hoje são transcrições.
 - [ ] **Nome e modalidade do 2º depoimento em vídeo** (`t13` em
-      `lib/content.ts`). O vídeo não tem legenda nem nome na tela, então
-      está no ar sem legenda. Confirmar também o uso de imagem autorizado.
+      `lib/content.ts`). Ele saiu da LP (o topo usa o da Maria Clara) e
+      continua em `/resultados`, sem legenda. Confirmar também o uso de
+      imagem autorizado.
 - [x] ~~Vídeos de depoimento~~ — o primeiro está no ar: Maria Clara
       (Aluna Premium), com uso de imagem autorizado por ela. Aparece na
       LP e em `/resultados`. Para adicionar outros, basta preencher
@@ -200,9 +223,6 @@ Pendente nesta LP:
       **Antes de subir um vídeo novo, ver "Como preparar um vídeo" no
       `README.md`**: arquivos de celular costumam vir em HEVC, que não
       toca em Chrome/Firefox, e acima de 100 MB o GitHub recusa.
-- [ ] **Bio/credencial do professor** — hoje a seção "Quem ensina" mostra
-      só os critérios de qualificação. Uma credencial nomeada aumentaria
-      a autoridade percebida, especialmente para o público de negócios.
 
 ## Removido por decisão do cliente
 

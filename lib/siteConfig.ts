@@ -19,10 +19,11 @@ export const siteConfig = {
     "Escola premium de inglês 100% online e ao vivo. Conteúdo estruturado e aplicação personalizada para o seu objetivo. Agende seu diagnóstico.",
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP ?? "5521980999435",
   whatsappMessage: "Olá! gostaria de agendar um diagnóstico",
-  // Mensagem própria da landing page de tráfego pago (/diagnostico).
-  // Serve para identificar, no WhatsApp, quais leads vieram do anúncio.
+  // Mensagem dos atalhos diretos da landing page (/diagnostico): botão
+  // flutuante e "Prefiro chamar direto no WhatsApp". Quem passa pelo quiz
+  // manda outra, com as respostas e o código (lib/quiz/message.ts).
   whatsappMessageLp:
-    "Olá! Vim pelo anúncio e gostaria de agendar o meu diagnóstico.",
+    "Olá, Snow Wison! Vim pelo site e gostaria de saber sobre as aulas de inglês e agendar o meu diagnóstico.",
   // PENDENTE — usuário do Instagram oficial
   instagram: "",
 } as const;

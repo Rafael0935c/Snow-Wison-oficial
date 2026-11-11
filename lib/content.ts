@@ -476,110 +476,162 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
-// Landing page de tráfego pago (/diagnostico). Objetivo único: levar ao
-// WhatsApp para agendar o diagnóstico. Não é linkada no menu — só
-// acessível pelo link do anúncio. Nenhuma menção a valores, por decisão
-// do cliente e coerência com o resto do site.
+// Landing page de tráfego pago (/diagnostico). Objetivo único: levar o
+// visitante ao quiz de diagnóstico, que abre o WhatsApp com a mensagem
+// pronta. Não é linkada no menu do site. Nenhuma menção a valores.
+// Voz: "nós, da Snow Wison"; frases que vêm dos anúncios ficam iguais.
+// As opções do quiz ficam em config/quiz.ts (fonte única).
 export const diagnostico = {
-  hero: {
-    eyebrow: "Diagnóstico",
-    heading: "Você entende quase tudo. Na hora de falar, trava.",
-    paragraph:
-      "Você já estudou bastante. O que provavelmente falta é um caminho pensado pra sua situação: a reunião de terça, a viagem de julho, a prova que já tem data marcada.",
-    cta: "Agendar diagnóstico",
-    microcopy: "Uma conversa no WhatsApp para entender seu objetivo.",
+  nav: {
+    links: [
+      { href: "#avaliacoes", label: "Avaliações" },
+      { href: "#como-funciona", label: "Como funciona" },
+      { href: "#professores", label: "Professores" },
+      { href: "#duvidas", label: "Dúvidas" },
+    ],
+    cta: "Fazer diagnóstico",
+    openMenu: "Abrir menu",
+    closeMenu: "Fechar menu",
+    menuLabel: "Menu da página",
   },
-  paraQuem: {
-    eyebrow: "Para quem é",
+  hero: {
+    eyebrow: "Diagnóstico gratuito e ao vivo",
+    // O título é dividido para a palavra-chave receber o marca-texto.
+    headingStart: "Você entende quase tudo. Na hora de falar,",
+    headingHighlight: "trava",
+    headingEnd: ".",
+    paragraph:
+      "Aulas de inglês 100% online, ao vivo e personalizadas. O primeiro passo é um diagnóstico gratuito com o fundador da escola.",
+    ctaPrimary: "Fazer meu diagnóstico",
+    ctaSecondary: "Ver avaliações",
+    microcopy: [
+      "Sem compromisso",
+      "Resposta em até 30 min, de seg. a sex., das 8h às 20h",
+    ],
+    videoPlay: "Assistir ao depoimento",
+  },
+  provas: [
+    { icon: "users", text: "+60 alunos atendidos" },
+    { icon: "live", text: "100% online e ao vivo" },
+    { icon: "target", text: "Ensino sob medida" },
+  ],
+  quiz: {
+    eyebrow: "Diagnóstico",
+    heading: "O primeiro passo é saber onde você está.",
+    paragraph:
+      "Responda 3 perguntas rápidas. Sua mensagem chega pronta no WhatsApp.",
+    cardTitle: "Diagnóstico de nível",
+    // {atual} e {total} são trocados pelos números do passo.
+    stepCounter: "Passo {atual} de {total}",
+    back: "Voltar",
+    next: "Continuar",
+    edit: "alterar",
+    noscript:
+      "O quiz precisa de JavaScript, que está desligado no seu navegador.",
+    noscriptLink: "Fale com a nossa equipe direto no WhatsApp.",
+    nameLabel: "Seu nome",
+    phoneLabel: "Seu WhatsApp",
+    phonePlaceholder: "(21) 99999-9999",
+    countryLabel: "País",
+    phoneIntlLabel: "Seu WhatsApp (com o código de área)",
+    abroad: "Mora fora do Brasil?",
+    backToBrazil: "Tenho número do Brasil",
+    submit: "Quero meu diagnóstico",
+    submitting: "Abrindo o WhatsApp…",
+    submitMicrocopy:
+      "Abre o WhatsApp com a sua mensagem pronta · Sem compromisso",
+    consent:
+      "Ao continuar, você concorda que nós, da Snow Wison, entremos em contato pelo WhatsApp sobre o seu diagnóstico.",
+    errors: {
+      name: "Digite seu nome (mínimo 2 letras).",
+      phone: "Confira o número com DDD, ex.: (21) 99999-9999.",
+      phoneIntl: "Confira o número com o código de área do seu país.",
+    },
+    success: {
+      // {nome} é trocado pelo primeiro nome digitado.
+      title: "Pronto, {nome}!",
+      text: "Sua mensagem está pronta no WhatsApp. É só tocar em enviar.",
+      reopen: "Abrir o WhatsApp de novo",
+      copy: "Copiar mensagem",
+      copied: "Mensagem copiada",
+    },
+  },
+  avaliacoes: {
+    eyebrow: "Avaliações",
+    heading: "O que os alunos dizem depois da primeira aula.",
+    note: "Mensagens recebidas no WhatsApp, publicadas com autorização.",
+    regionLabel: "Avaliações de alunos",
+    // {atual} e {total}: posição da mensagem no carrossel.
+    slideLabel: "{atual} de {total}",
+    prev: "Avaliação anterior",
+    next: "Próxima avaliação",
+    pause: "Pausar avaliações",
+    play: "Retomar avaliações",
+    cta: "Fazer meu diagnóstico",
+  },
+  dores: {
+    eyebrow: "Você se reconhece?",
     heading: "Três pontos de partida. O mesmo travamento.",
+    answerLabel: "Como resolvemos",
     items: [
       {
         tag: "Negócios",
         title: "A reunião em que você virou espectador",
         description:
           "Você entende o que os outros falam. Na hora de responder, escolhe a frase mais simples, ou espera pra escrever aquilo por e-mail depois.",
+        answer:
+          "No diagnóstico, mapeamos as situações do seu trabalho. Nas aulas, você treina exatamente essas conversas.",
       },
       {
         tag: "Viagem",
         title: "Tudo planejado, menos essa parte",
         description:
           "O roteiro está pronto, o hotel reservado. A parte que ninguém treina é a pergunta fora do script no balcão do aeroporto.",
+        answer:
+          "As aulas trabalham as situações reais da sua viagem, do aeroporto ao hotel.",
       },
       {
         tag: "Provas e certificações",
         title: "A data que não se move",
         description:
           "Faltam poucas semanas. Não dá pra estudar tudo de novo. Dá pra saber o que cai, o que você ainda erra, e por onde começar.",
+        answer:
+          "O diagnóstico mostra o que você ainda erra e por onde começar, dentro do prazo que você tem.",
       },
     ],
-  },
-  implicacao: {
-    heading: "Inglês é aquela coisa que sempre dá pra começar mês que vem.",
-    paragraph:
-      "A reunião, a viagem e a prova têm data marcada. Só o estudo é que nunca tem prazo. Por isso a primeira conversa aqui não é sobre qual pacote fechar. É sobre entender aonde você precisa chegar, e em quanto tempo.",
   },
   comoFunciona: {
     eyebrow: "Como funciona",
-    heading: "O que acontece no diagnóstico.",
+    heading: "Do contato ao resultado.",
     steps: [
       {
         number: "01",
-        title: "Você diz aonde quer chegar",
+        title: "Diagnóstico gratuito",
         description:
-          "Reunião, viagem, prova, entrevista. Quanto mais específico, melhor.",
+          "Uma conversa ao vivo com o fundador para entender seu objetivo, seu nível de verdade e onde você trava.",
       },
       {
         number: "02",
-        title: "A gente vê onde você está hoje",
+        title: "Plano sob medida",
         description:
-          "Não é teste com nota. É entender o que já funciona e o que trava.",
+          "Definimos o conteúdo, a ordem e o formato certo para você: individual, dupla ou grupo.",
       },
       {
         number: "03",
-        title: "Você sai com o caminho na mão",
+        title: "Aulas ao vivo",
         description:
-          "Qual conteúdo, em que ordem, em qual formato — e o que esperar de cada etapa.",
+          "Com professor, 100% online, falando inglês desde a primeira aula, no seu nível.",
+      },
+      {
+        number: "04",
+        title: "Acompanhamento",
+        description:
+          "Sua evolução é acompanhada ao longo do processo, com ajustes sempre que necessário.",
       },
     ],
   },
-  formatos: {
-    eyebrow: "Formatos",
-    heading: "Qual desses encaixa no seu momento?",
-    note: "Isso é uma das coisas que o diagnóstico ajuda a definir.",
-    items: [
-      {
-        tag: "Premium",
-        name: "Individual",
-        description:
-          "Ritmo, foco e aplicação construídos em torno de um aluno só.",
-      },
-      {
-        tag: "Plus",
-        name: "Dupla",
-        description:
-          "Interação e acompanhamento, com a mesma estrutura de conteúdo.",
-      },
-      {
-        tag: "Economic",
-        name: "Grupo",
-        description:
-          "Ambiente colaborativo, mesmo padrão de conteúdo das demais.",
-      },
-      {
-        tag: "Específica",
-        name: "Unique",
-        description:
-          "Para objetivo específico, urgência ou prazo curto, com material próprio.",
-      },
-    ],
-  },
-  provaSocial: {
-    eyebrow: "Resultados",
-    heading: "O que os alunos dizem depois da primeira aula.",
-    note: "Mensagens recebidas no WhatsApp, publicadas com autorização.",
-  },
-  professor: {
-    eyebrow: "Quem ensina",
+  professores: {
+    eyebrow: "Professores",
     heading: "Quem vai estar do outro lado da tela.",
     paragraph:
       "A Snow Wison trabalha apenas com professores que apresentem alguma das qualificações abaixo. Todos passam por um treinamento interno, alinhado à metodologia da escola.",
@@ -590,14 +642,35 @@ export const diagnostico = {
       "Certificações internacionais",
     ],
   },
+  paraQuem: {
+    eyebrow: "Para quem é",
+    heading: "A Snow Wison é para você?",
+    yesTitle: "É para você se…",
+    yes: [
+      "quer falar inglês, não só entender;",
+      "tem um objetivo: trabalho, viagem, prova ou conversação;",
+      "prefere aula ao vivo, com professor de verdade;",
+      "quer um caminho pensado para você.",
+    ],
+    noTitle: "Não é para você se…",
+    no: [
+      "procura curso gravado para assistir sozinho;",
+      "espera fluência em poucas semanas, sem prática.",
+    ],
+  },
   faq: {
-    eyebrow: "Antes de você perguntar",
+    eyebrow: "Dúvidas",
     heading: "O que costuma travar a decisão.",
     items: [
       {
-        question: "Preciso já saber inglês para fazer o diagnóstico?",
+        question: "As aulas são 100% online?",
         answer:
-          "Não precisa. O diagnóstico existe justamente pra identificar seu ponto de partida, seja ele qual for. Tem aluno que começou do zero.",
+          "Sim. Todas as aulas são online e ao vivo, com professor. Você estuda de onde estiver.",
+      },
+      {
+        question: "Como funciona o diagnóstico? É gratuito?",
+        answer:
+          "É gratuito. É uma conversa ao vivo com o fundador da escola: entendemos o seu objetivo, sondamos o seu nível e mostramos o caminho mais adequado para você.",
       },
       {
         question: "O diagnóstico me obriga a fechar alguma coisa?",
@@ -605,38 +678,70 @@ export const diagnostico = {
           "Não obriga. Você sai dele sabendo qual caminho faz sentido pro seu objetivo. A decisão de seguir é sua, com a informação já na mão.",
       },
       {
-        question: "E os valores?",
+        question: "Nunca estudei inglês. Consigo começar?",
         answer:
-          "Entram na conversa depois que a gente entende seu objetivo e o formato adequado. Não fechamos pacote antes de saber aonde você quer chegar.",
+          "Consegue. O diagnóstico identifica o seu ponto de partida, seja ele qual for. Temos alunos que começaram do zero.",
       },
       {
-        question: "As aulas são ao vivo ou gravadas?",
-        answer: "Ao vivo, sempre. Aula gravada não faz parte do modelo.",
+        question: "Vou falar desde a primeira aula?",
+        answer:
+          "Sim, no seu nível. Usar o idioma desde o início é um dos princípios das nossas aulas.",
       },
       {
-        question: "Preciso ir a algum lugar?",
+        question: "As aulas são individuais, em dupla ou em grupo?",
         answer:
-          "Não precisa sair de casa. O ensino é 100% online, direto de onde você estiver.",
+          "Temos os três formatos, além do Unique, para objetivos específicos ou prazos curtos. O formato certo para você é definido no diagnóstico.",
       },
       {
-        question: "Quanto tempo dura e quantas aulas são?",
+        question: "Quanto custa?",
         answer:
-          "Isso varia com o seu objetivo, e é justamente uma das coisas que o diagnóstico define.",
+          "Formato, horários e valores são combinados depois do diagnóstico, de acordo com o seu objetivo e a modalidade. Não fechamos pacote antes de entender aonde você quer chegar.",
+      },
+      {
+        question: "Quais são os horários?",
+        answer:
+          "Os horários das aulas são combinados com você depois do diagnóstico. Nosso atendimento pelo WhatsApp funciona de segunda a sexta, das 8h às 20h.",
+      },
+      {
+        question: "Quem são os professores?",
+        answer:
+          "Só trabalhamos com professores que tenham graduação, mestrado, experiência comprovada ou certificação internacional. Todos passam pelo nosso treinamento interno.",
+      },
+      {
+        question: "Como sei que o método funciona?",
+        answer:
+          "Pelos alunos: já são mais de 60 atendidos, e as avaliações nesta página são mensagens reais deles. E pelo acompanhamento: a sua evolução é observada ao longo de todo o processo, não só no começo.",
       },
       {
         question: "Já tentei outros cursos e não deu certo. O que muda aqui?",
         answer:
           "A estrutura de conteúdo existe e é sólida, como em qualquer curso sério. A diferença está em como ela chega até você: o ritmo, o foco e os recursos que o professor escolhe a partir de uma leitura real do seu perfil.",
       },
+      {
+        question: "Vocês ensinam crianças?",
+        answer: "Sim. A Snow Wison ensina crianças a partir de 6 anos.",
+      },
     ],
   },
   ctaFinal: {
+    eyebrow: "Contato",
     headingLine1: "Uma conversa antes de qualquer aula.",
     headingLine2: "É assim que começa.",
     paragraph:
       "Conte seu objetivo, entenda onde você está e saia sabendo o caminho. Sem compromisso de seguir.",
-    cta: "Agendar diagnóstico",
-    microcopy: "Você fala direto com nossa equipe pelo WhatsApp.",
+    cta: "Fazer meu diagnóstico",
+    direct: "Prefiro chamar direto no WhatsApp",
+  },
+  footer: {
+    notice:
+      "Formato das aulas, horários e valores são combinados depois do diagnóstico.",
+    whatsapp: "WhatsApp",
+    // [PREENCHER] razão social, CNPJ, Instagram e link da Política de
+    // Privacidade: entram quando houver os dados (ver PENDENCIAS.md).
+  },
+  mobileBar: {
+    cta: "Fazer meu diagnóstico",
+    whatsappLabel: "Chamar a Snow Wison no WhatsApp",
   },
 } as const;
 

@@ -2,6 +2,7 @@
 
 import { useId, useState, type ReactNode } from "react";
 import { ChevronDown } from "lucide-react";
+import { track } from "@/lib/track";
 
 type FaqAccordionItem = {
   question: string;
@@ -16,11 +17,17 @@ type FaqAccordionProps = {
    * tem o próprio <h2>, para não pular nem repetir níveis.
    */
   headingLevel?: 2 | 3;
+  /** Registra o evento faq_open (landing page). */
+  trackOpens?: boolean;
 };
 
 // Uma pergunta aberta por vez, com transição de altura via grid-template-rows
 // (funciona melhor que <details> nativo para animar abertura/fechamento).
-export function FaqAccordion({ items, headingLevel = 2 }: FaqAccordionProps) {
+export function FaqAccordion({
+  items,
+  headingLevel = 2,
+  trackOpens = false,
+}: FaqAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const baseId = useId();
   const Heading = headingLevel === 3 ? "h3" : "h2";
@@ -40,7 +47,12 @@ export function FaqAccordion({ items, headingLevel = 2 }: FaqAccordionProps) {
                 type="button"
                 aria-expanded={isOpen}
                 aria-controls={panelId}
-                onClick={() => setOpenIndex(isOpen ? null : index)}
+                onClick={() => {
+                  setOpenIndex(isOpen ? null : index);
+                  if (!isOpen && trackOpens) {
+                    track("faq_open", { question_id: index + 1 });
+                  }
+                }}
                 className="flex w-full items-center justify-between gap-6 py-6 text-left"
               >
                 <span className="font-display text-base font-semibold text-ivory md:text-lg">

@@ -5,6 +5,8 @@ type WhatsAppBubbleProps = {
   testimonial: Testimonial;
   /** O padrão (`mb-8`) é o espaçamento da grade em colunas de /resultados. */
   className?: string;
+  /** `light`: sobre fundo marfim (seção de avaliações da landing page). */
+  tone?: "dark" | "light";
 };
 
 // Formato de bolha de chat (canto sem raio para simular o "rabinho"),
@@ -15,20 +17,34 @@ type WhatsAppBubbleProps = {
 export function WhatsAppBubble({
   testimonial,
   className = "mb-8",
+  tone = "dark",
 }: WhatsAppBubbleProps) {
+  const light = tone === "light";
   return (
     <div className={`break-inside-avoid ${className}`}>
-      <div className="relative rounded-2xl rounded-bl-sm bg-navy-2 px-5 py-4 shadow-[0_8px_24px_rgba(0,0,0,0.28)]">
+      <div
+        className={`relative rounded-2xl rounded-bl-sm bg-navy-2 px-5 py-4 ${
+          light
+            ? "shadow-[0_10px_28px_rgba(10,15,36,0.18)]"
+            : "shadow-[0_8px_24px_rgba(0,0,0,0.28)]"
+        }`}
+      >
         <p className="leading-[1.6] text-ivory/85">{testimonial.quote}</p>
         <div className="mt-2 flex justify-end">
           <CheckCheck className="h-4 w-4 text-blue-soft" aria-hidden="true" />
         </div>
       </div>
       <div className="mt-3 pl-2">
-        <p className="font-display text-sm font-semibold text-ivory">
+        <p
+          className={`font-display text-sm font-semibold ${light ? "text-ink" : "text-ivory"}`}
+        >
           {testimonial.name}
         </p>
-        <p className="mt-0.5 font-utility text-[0.65rem] uppercase tracking-[0.1em] text-blue-soft">
+        <p
+          className={`mt-0.5 font-utility text-[0.65rem] uppercase tracking-[0.1em] ${
+            light ? "text-blue-deep" : "text-blue-soft"
+          }`}
+        >
           {testimonial.role}
         </p>
       </div>

@@ -185,6 +185,65 @@
   }
 }
 
+/* ---------- Landing page (/diagnostico) ---------- */
+
+/* Âncoras da LP (menu, "Fazer meu diagnóstico") rolam suave e param
+   abaixo do cabeçalho fixo. :has() limita isso à LP; com "reduzir
+   movimento", a regra global acima já troca para rolagem instantânea. */
+:root:has(.lp-root) {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+/* Marca-texto na palavra-chave do título: faixa azul atrás da metade de
+   baixo das letras. Gradiente, não imagem; acompanha a quebra de linha. */
+.lp-highlight {
+  background-image: linear-gradient(
+    transparent 58%,
+    rgba(47, 140, 240, 0.55) 58%,
+    rgba(47, 140, 240, 0.55) 92%,
+    transparent 92%
+  );
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 0.06em;
+}
+
+/* Textura de pontos das faixas navy da LP: leve o bastante para só dar
+   matéria ao fundo. */
+.lp-dots {
+  background-color: var(--navy);
+  background-image: radial-gradient(
+    rgba(243, 245, 248, 0.07) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* Troca de passo do quiz: entra com fade e 12px de deslocamento. */
+@keyframes quiz-step-in {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.quiz-step {
+  animation: quiz-step-in 0.25s var(--ease-brand) both;
+}
+
+/* Barra de rolagem escondida no carrossel (os botões controlam). */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

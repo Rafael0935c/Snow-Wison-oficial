@@ -1,7 +1,8 @@
 # Snow Wison Idiomas — Site oficial
 
 Site institucional da Snow Wison, escola premium de inglês. Next.js (App
-Router) + TypeScript + Tailwind CSS v4 + Framer Motion.
+Router) + TypeScript + Tailwind CSS v4. Animações de entrada em CSS puro
+(`components/ui/Reveal.tsx`), sem biblioteca de animação.
 
 ## Instalação e execução
 
@@ -20,6 +21,9 @@ Outros comandos:
 npm run build   # build de produção
 npm run start   # roda o build de produção
 npm run lint    # ESLint
+npm run test    # testes unitários (Vitest)
+npm run format  # formata o código (Prettier)
+npm run check   # lint + tipos + formatação + testes — rodar antes de cada commit
 ```
 
 ## Variáveis de ambiente
@@ -40,15 +44,25 @@ um número inventado. Ver `PENDENCIAS.md`.
 
 ```
 /app            rotas (App Router) — uma pasta por página
+  /(site)        site institucional (cabeçalho, rodapé e botão flutuante no layout)
+  /(lp)          landing pages de anúncio (layout próprio, sem o menu do site)
+                 — o parêntese não entra no endereço: /sobre continua /sobre
 /components
   /layout        Header, Footer, MobileNav, WhatsAppFAB, Atmosphere, StructuralRail
   /ui            componentes base (Button, SectionLabel, Reveal, Placeholder, BrandMark...)
   /sections      seções de página, organizadas por rota
+  /lp            landing page /diagnostico e o quiz (/lp/quiz)
+/config
+  quiz.ts        opções do quiz — fonte única (interface, mensagem, servidor)
+  security-headers.mjs  headers de segurança (CSP etc.)
 /lib
   content.ts     TODO o texto do site vive aqui
   siteConfig.ts  WhatsApp, Instagram, URLs — dados pendentes ficam vazios
   fonts.ts       Sora / Manrope / Space Mono via next/font
   jsonLd.ts      dados estruturados (schema.org)
+  quiz/          nome, telefone, mensagem do WhatsApp e progresso do quiz
+  track.ts       eventos de análise (desligados até haver GTM/Pixel e consentimento)
+/tests/unit      testes unitários
 /assets/brand    assets de marca (fora de public/ de propósito — ver README.md lá dentro)
 ```
 
@@ -61,6 +75,35 @@ visível (títulos, parágrafos, listas, microcopy), edite esse arquivo.
 O número de alunos atendidos ("+60") é uma constante só,
 `ALUNOS_ATENDIDOS`, no topo do arquivo. Ela alimenta o topo da home,
 `/sobre` e `/resultados` — atualize ali e as três páginas mudam juntas.
+
+### Landing page `/diagnostico` e o quiz
+
+A página de anúncios é um funil de objetivo único: todo botão "Fazer meu
+diagnóstico" leva ao quiz, que tem 3 perguntas e o contato, e no fim abre
+o WhatsApp com a mensagem pronta.
+
+| Para mudar | Onde |
+|---|---|
+| Textos da página (títulos, FAQ, botões) | `lib/content.ts`, objeto `diagnostico` |
+| Perguntas e opções do quiz | `config/quiz.ts` (vale para a tela, a mensagem e o servidor) |
+| Modelo da mensagem do WhatsApp | `lib/quiz/message.ts` |
+| Mensagem dos atalhos diretos (botão flutuante, "Prefiro chamar direto") | `lib/siteConfig.ts`, `whatsappMessageLp` |
+
+- **Anúncio segmentado:** `https://snowwison.com/diagnostico?objetivo=viagem`
+  já chega com o objetivo marcado e abre no passo 2. Valores aceitos: os
+  `id` de `OBJETIVOS` em `config/quiz.ts` (`carreira`, `viagem`,
+  `conversacao`, `estudos`, `outro`); qualquer outro é ignorado.
+- **Código do lead:** cada envio gera um código `SW-XXXXXX`, que vai no fim
+  da mensagem. É ele que vai casar a conversa do WhatsApp com o registro
+  no CRM, quando o envio para a API entrar (etapa 4).
+- **Privacidade:** nome e telefone nunca são gravados no navegador; só as
+  escolhas, na aba atual, para retomar se a página recarregar.
+- **Saudação do WhatsApp Business** (aprovada em 11/11/2026), para colar
+  em Ferramentas comerciais → Mensagem de saudação:
+
+  > Olá! Aqui é a Snow Wison Idiomas, obrigado pela mensagem.
+  > Se você veio pelo nosso site, suas respostas e o seu código já chegaram por aqui. Respondemos em até 30 minutos, de segunda a sexta, das 8h às 20h.
+  > Se não, conte para nós: qual é o seu objetivo com o inglês e para quando você precisa?
 
 ### Depoimentos
 
@@ -84,10 +127,12 @@ export const testimonials: Testimonial[] = [
 ];
 ```
 
-Quem tiver `videoUrl` aparece em destaque, acima da grade de bolhas —
-tanto em `/resultados` quanto na landing page. A home mostra só uma
-seleção (um vídeo e três mensagens), definida pelos ids `VIDEO_ID` e
-`QUOTE_IDS` no topo de `components/sections/ResultadosTeaser.tsx`. Se o array ficar
+Quem tiver `videoUrl` aparece em destaque, acima da grade de bolhas, em
+`/resultados`. A home mostra só uma seleção (um vídeo e três mensagens),
+definida pelos ids `VIDEO_ID` e `QUOTE_IDS` no topo de
+`components/sections/ResultadosTeaser.tsx`. Na landing page, o vídeo do
+topo é escolhido por `HERO_VIDEO_ID` em `components/lp/LpHero.tsx` e a
+ordem do carrossel por `ORDER` em `components/lp/Avaliacoes.tsx`. Se o array ficar
 totalmente vazio (todos sem `quote`), a seção volta a mostrar um
 `Placeholder` de "conteúdo pendente" automaticamente.
 
