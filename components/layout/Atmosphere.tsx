@@ -9,13 +9,15 @@ export function Atmosphere() {
       <div
         className="absolute -right-40 -top-40 h-[36rem] w-[36rem] rounded-full blur-3xl"
         style={{
-          background: "radial-gradient(circle, rgba(47,140,240,0.20), transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(47,140,240,0.20), transparent 70%)",
         }}
       />
       <div
         className="absolute -left-40 top-1/3 h-[40rem] w-[40rem] rounded-full blur-3xl"
         style={{
-          background: "radial-gradient(circle, rgba(18,41,158,0.28), transparent 70%)",
+          background:
+            "radial-gradient(circle, rgba(18,41,158,0.28), transparent 70%)",
         }}
       />
     </div>

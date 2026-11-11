@@ -60,7 +60,11 @@ export function LpProvaSocial() {
 
       <div className="mt-16 columns-1 gap-8 sm:columns-2 lg:columns-3">
         {featured.map((testimonial, index) => (
-          <Reveal key={testimonial.id} delay={(index % 3) * 0.08} variant="quiet">
+          <Reveal
+            key={testimonial.id}
+            delay={(index % 3) * 0.08}
+            variant="quiet"
+          >
             <WhatsAppBubble testimonial={testimonial} />
           </Reveal>
         ))}

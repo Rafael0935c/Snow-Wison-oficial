@@ -36,7 +36,13 @@ export function PathProgress() {
     <div ref={containerRef} className="w-full">
       <svg viewBox="0 0 480 220" className="w-full" aria-hidden="true">
         <defs>
-          <linearGradient id="path-progress-gradient" x1="0" y1="1" x2="1" y2="0">
+          <linearGradient
+            id="path-progress-gradient"
+            x1="0"
+            y1="1"
+            x2="1"
+            y2="0"
+          >
             <stop offset="0%" stopColor="#4FA3FF" />
             <stop offset="100%" stopColor="#12299E" />
           </linearGradient>

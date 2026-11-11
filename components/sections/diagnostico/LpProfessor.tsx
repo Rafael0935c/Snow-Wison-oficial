@@ -17,7 +17,10 @@ export function LpProfessor() {
         </p>
       </Reveal>
 
-      <Reveal delay={0.18} className="mt-10 flex flex-wrap justify-center gap-3">
+      <Reveal
+        delay={0.18}
+        className="mt-10 flex flex-wrap justify-center gap-3"
+      >
         {diagnostico.professor.criteria.map((item) => (
           <span
             key={item}

@@ -44,7 +44,10 @@ export function MetodologiaTeaser() {
               </div>
             </div>
             <div className="grid grid-cols-[1.4rem_minmax(0,1fr)] items-baseline">
-              <span className="font-utility text-lg text-blue-soft" aria-hidden="true">
+              <span
+                className="font-utility text-lg text-blue-soft"
+                aria-hidden="true"
+              >
                 +
               </span>
               <div>
@@ -57,7 +60,10 @@ export function MetodologiaTeaser() {
               </div>
             </div>
             <div className="grid grid-cols-[1.4rem_minmax(0,1fr)] items-baseline">
-              <span className="font-utility text-lg text-blue-soft" aria-hidden="true">
+              <span
+                className="font-utility text-lg text-blue-soft"
+                aria-hidden="true"
+              >
                 =
               </span>
               <p className="bg-gradient-to-r from-ivory to-blue-soft bg-clip-text font-display text-xl font-semibold text-transparent lg:text-2xl">

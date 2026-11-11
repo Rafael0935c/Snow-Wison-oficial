@@ -1,5 +1,9 @@
 import Link from "next/link";
-import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ReactNode } from "react";
+import type {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  ReactNode,
+} from "react";
 
 type ButtonVariant = "primary" | "ghost";
 
@@ -13,7 +17,9 @@ export type LinkButtonProps = CommonProps &
   Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "className"> & { href: string };
 
 type NativeButtonProps = CommonProps &
-  Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className"> & { href?: undefined };
+  Omit<ButtonHTMLAttributes<HTMLButtonElement>, "className"> & {
+    href?: undefined;
+  };
 
 export type ButtonProps = LinkButtonProps | NativeButtonProps;
 

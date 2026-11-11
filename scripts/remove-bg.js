@@ -6,7 +6,10 @@ const OUT = path.join(process.cwd(), "assets/brand/logo-mark.png");
 
 async function run() {
   const image = sharp(SRC);
-  const { data, info } = await image.ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+  const { data, info } = await image
+    .ensureAlpha()
+    .raw()
+    .toBuffer({ resolveWithObject: true });
 
   const channels = info.channels;
   const w = info.width;
@@ -16,7 +19,12 @@ async function run() {
     const idx = (y * w + x) * channels;
     return [data[idx], data[idx + 1], data[idx + 2]];
   }
-  const corners = [pixelAt(0, 0), pixelAt(w - 1, 0), pixelAt(0, h - 1), pixelAt(w - 1, h - 1)];
+  const corners = [
+    pixelAt(0, 0),
+    pixelAt(w - 1, 0),
+    pixelAt(0, h - 1),
+    pixelAt(w - 1, h - 1),
+  ];
   const bg = corners.reduce(
     (acc, c) => [acc[0] + c[0] / 4, acc[1] + c[1] / 4, acc[2] + c[2] / 4],
     [0, 0, 0]
@@ -30,7 +38,9 @@ async function run() {
     const r = data[idx];
     const g = data[idx + 1];
     const b = data[idx + 2];
-    const dist = Math.sqrt((r - bg[0]) ** 2 + (g - bg[1]) ** 2 + (b - bg[2]) ** 2);
+    const dist = Math.sqrt(
+      (r - bg[0]) ** 2 + (g - bg[1]) ** 2 + (b - bg[2]) ** 2
+    );
 
     let alpha;
     if (dist <= THRESHOLD_FULL) {
@@ -38,7 +48,9 @@ async function run() {
     } else if (dist >= THRESHOLD_FEATHER) {
       alpha = 255;
     } else {
-      alpha = Math.round(((dist - THRESHOLD_FULL) / (THRESHOLD_FEATHER - THRESHOLD_FULL)) * 255);
+      alpha = Math.round(
+        ((dist - THRESHOLD_FULL) / (THRESHOLD_FEATHER - THRESHOLD_FULL)) * 255
+      );
     }
     data[idx + 3] = alpha;
   }
@@ -64,7 +76,11 @@ async function run() {
   // edges are crisp (alpha 255), the shadow is the only thing left partial.
   const region = { x0: 0.08, x1: 0.5, y0: 0.82, y1: 1.0 };
   for (let y = Math.floor(th * region.y0); y < th; y++) {
-    for (let x = Math.floor(tw * region.x0); x < Math.floor(tw * region.x1); x++) {
+    for (
+      let x = Math.floor(tw * region.x0);
+      x < Math.floor(tw * region.x1);
+      x++
+    ) {
       const aIdx = (y * tw + x) * tchannels + 3;
       tdata[aIdx] = 0;
     }
@@ -128,7 +144,14 @@ async function run() {
     .toFile(OUT);
 
   const outMeta = await sharp(OUT).metadata();
-  console.log("Output written:", OUT, "size:", outMeta.width, "x", outMeta.height);
+  console.log(
+    "Output written:",
+    OUT,
+    "size:",
+    outMeta.width,
+    "x",
+    outMeta.height
+  );
 }
 
 run().catch((err) => {

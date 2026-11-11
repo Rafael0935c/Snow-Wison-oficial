@@ -29,8 +29,10 @@ export function StructuralRail({ nodes }: StructuralRailProps) {
 
   useEffect(() => {
     function update() {
-      const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
+      const scrollableHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const pct =
+        scrollableHeight > 0 ? (window.scrollY / scrollableHeight) * 100 : 0;
       const progress = Math.min(100, Math.max(0, pct));
 
       if (fillRef.current) {
@@ -44,7 +46,10 @@ export function StructuralRail({ nodes }: StructuralRailProps) {
         let top = 0;
         if (target && scrollableHeight > 0) {
           const targetTop = target.getBoundingClientRect().top + window.scrollY;
-          top = Math.min(100, Math.max(0, (targetTop / scrollableHeight) * 100));
+          top = Math.min(
+            100,
+            Math.max(0, (targetTop / scrollableHeight) * 100)
+          );
         }
         el.style.top = `${top}%`;
         el.dataset.active = progress >= top - 2 ? "true" : "false";

@@ -14,7 +14,10 @@ export const metadata: Metadata = {
 export default function SobrePage() {
   return (
     <main id="main-content">
-      <PageIntro heading={sobre.intro.heading} paragraph={sobre.intro.paragraph} />
+      <PageIntro
+        heading={sobre.intro.heading}
+        paragraph={sobre.intro.paragraph}
+      />
       <SplitText
         eyebrow={sobre.quemSomos.eyebrow}
         heading={sobre.quemSomos.heading}

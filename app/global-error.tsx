@@ -40,7 +40,9 @@ export default function GlobalError({
         >
           Erro inesperado
         </p>
-        <h1 style={{ marginTop: "1.5rem", fontSize: "1.5rem", fontWeight: 600 }}>
+        <h1
+          style={{ marginTop: "1.5rem", fontSize: "1.5rem", fontWeight: 600 }}
+        >
           Algo deu errado.
         </h1>
         <p style={{ marginTop: "1rem", color: "rgba(243,245,248,0.62)" }}>

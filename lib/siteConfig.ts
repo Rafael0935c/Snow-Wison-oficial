@@ -21,7 +21,8 @@ export const siteConfig = {
   whatsappMessage: "Olá! gostaria de agendar um diagnóstico",
   // Mensagem própria da landing page de tráfego pago (/diagnostico).
   // Serve para identificar, no WhatsApp, quais leads vieram do anúncio.
-  whatsappMessageLp: "Olá! Vim pelo anúncio e gostaria de agendar o meu diagnóstico.",
+  whatsappMessageLp:
+    "Olá! Vim pelo anúncio e gostaria de agendar o meu diagnóstico.",
   // PENDENTE — usuário do Instagram oficial
   instagram: "",
 } as const;

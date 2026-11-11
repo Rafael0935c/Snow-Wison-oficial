@@ -4,7 +4,10 @@ import { MetodologiaTeaser } from "@/components/sections/MetodologiaTeaser";
 import { Problema } from "@/components/sections/Problema";
 import { ModalidadesTeaser } from "@/components/sections/ModalidadesTeaser";
 import { CtaFinal } from "@/components/sections/CtaFinal";
-import { StructuralRail, type RailNode } from "@/components/layout/StructuralRail";
+import {
+  StructuralRail,
+  type RailNode,
+} from "@/components/layout/StructuralRail";
 
 // Ordem pensada para quem decide rápido: credenciais já na primeira tela,
 // depois a prova (alunos), o porquê (método e quem ensina), o problema

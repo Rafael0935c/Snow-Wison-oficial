@@ -17,6 +17,6 @@
     "directory": "./out",
     // Rotas inexistentes caem na página 404 do próprio site, em vez de
     // um erro genérico da Cloudflare.
-    "not_found_handling": "404-page"
-  }
+    "not_found_handling": "404-page",
+  },
 }

@@ -13,15 +13,13 @@ export const metadata: Metadata = {
 export default function FaqPage() {
   const items = faq.items.map((item, index) => ({
     question: item.question,
-    answer:
-      item.answer ??
-      (
-        <Placeholder
-          type="quote"
-          label="RESPOSTA PENDENTE"
-          fieldName={`faq.items[${index}].answer`}
-        />
-      ),
+    answer: item.answer ?? (
+      <Placeholder
+        type="quote"
+        label="RESPOSTA PENDENTE"
+        fieldName={`faq.items[${index}].answer`}
+      />
+    ),
   }));
 
   return (

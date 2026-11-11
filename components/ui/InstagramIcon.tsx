@@ -1,6 +1,10 @@
 // lucide-react não inclui ícones de marca (Instagram, etc.).
 // SVG local no mesmo estilo de traço da lucide para manter consistência visual.
-export function InstagramIcon({ className = "h-4 w-4" }: { className?: string }) {
+export function InstagramIcon({
+  className = "h-4 w-4",
+}: {
+  className?: string;
+}) {
   return (
     <svg
       viewBox="0 0 24 24"

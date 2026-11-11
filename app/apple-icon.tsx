@@ -15,26 +15,24 @@ export default function AppleIcon() {
   ).toString("base64");
 
   return new ImageResponse(
-    (
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          background: "#05070F",
-        }}
-      >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`data:image/png;base64,${logoBase64}`}
-          height={150}
-          width={116}
-          alt=""
-        />
-      </div>
-    ),
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#05070F",
+      }}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`data:image/png;base64,${logoBase64}`}
+        height={150}
+        width={116}
+        alt=""
+      />
+    </div>,
     { ...size }
   );
 }

@@ -88,7 +88,8 @@ export const home = {
   problema: {
     eyebrow: "O problema",
     heading: "Por que não consegui aprender até agora?",
-    subheading: "Talvez o caminho nunca tenha sido pensado para o seu objetivo.",
+    subheading:
+      "Talvez o caminho nunca tenha sido pensado para o seu objetivo.",
     items: [
       "Estudar sem saber exatamente onde precisa chegar",
       "Entender tudo na leitura e travar na hora de falar",
@@ -140,19 +141,22 @@ export const home = {
         id: "individual",
         tag: "Experiência Premium",
         name: "Individual",
-        description: "Ritmo, foco e aplicação construídos em torno de um aluno só.",
+        description:
+          "Ritmo, foco e aplicação construídos em torno de um aluno só.",
       },
       {
         id: "dupla",
         tag: "Experiência Plus",
         name: "Dupla",
-        description: "Interação e acompanhamento, com a mesma estrutura de conteúdo.",
+        description:
+          "Interação e acompanhamento, com a mesma estrutura de conteúdo.",
       },
       {
         id: "grupo",
         tag: "Experiência Economic",
         name: "Grupo",
-        description: "Ambiente colaborativo, mesmo padrão de conteúdo das demais.",
+        description:
+          "Ambiente colaborativo, mesmo padrão de conteúdo das demais.",
       },
       {
         id: "unique",
@@ -225,19 +229,23 @@ export const metodologia = {
     items: [
       {
         title: "Prática ativa",
-        description: "O aluno usa o idioma desde o início — não apenas estuda regras sobre ele.",
+        description:
+          "O aluno usa o idioma desde o início — não apenas estuda regras sobre ele.",
       },
       {
         title: "Progressão estruturada",
-        description: "Cada etapa constrói sobre a anterior, em vez de saltos aleatórios de conteúdo.",
+        description:
+          "Cada etapa constrói sobre a anterior, em vez de saltos aleatórios de conteúdo.",
       },
       {
         title: "Aplicação contextual",
-        description: "O conteúdo é trabalhado dentro de situações reais ligadas ao objetivo do aluno.",
+        description:
+          "O conteúdo é trabalhado dentro de situações reais ligadas ao objetivo do aluno.",
       },
       {
         title: "Acompanhamento contínuo",
-        description: "A evolução é observada ao longo do processo, não apenas no início.",
+        description:
+          "A evolução é observada ao longo do processo, não apenas no início.",
       },
     ],
   },
@@ -407,7 +415,7 @@ export const testimonials: Testimonial[] = [
     name: "Érika",
     role: "Aluna Unique",
     quote:
-      "Muito legal, gostei bastante. Nas minhas experiências com os outros dois professores, eu não tinha aprendido o que aprendi hoje. Pode ser \"besta\" para alguns, mas é bem importante para começar a aprender — é a base do inglês.",
+      'Muito legal, gostei bastante. Nas minhas experiências com os outros dois professores, eu não tinha aprendido o que aprendi hoje. Pode ser "besta" para alguns, mas é bem importante para começar a aprender — é a base do inglês.',
   },
   {
     id: "t7",
@@ -420,7 +428,8 @@ export const testimonials: Testimonial[] = [
     id: "t8",
     name: "Lara",
     role: "Aluna Premium",
-    quote: "Muito obrigada pela aula, eu amei! Superou minhas expectativas — foi excelente.",
+    quote:
+      "Muito obrigada pela aula, eu amei! Superou minhas expectativas — foi excelente.",
   },
   {
     id: "t9",
@@ -541,22 +550,26 @@ export const diagnostico = {
       {
         tag: "Premium",
         name: "Individual",
-        description: "Ritmo, foco e aplicação construídos em torno de um aluno só.",
+        description:
+          "Ritmo, foco e aplicação construídos em torno de um aluno só.",
       },
       {
         tag: "Plus",
         name: "Dupla",
-        description: "Interação e acompanhamento, com a mesma estrutura de conteúdo.",
+        description:
+          "Interação e acompanhamento, com a mesma estrutura de conteúdo.",
       },
       {
         tag: "Economic",
         name: "Grupo",
-        description: "Ambiente colaborativo, mesmo padrão de conteúdo das demais.",
+        description:
+          "Ambiente colaborativo, mesmo padrão de conteúdo das demais.",
       },
       {
         tag: "Específica",
         name: "Unique",
-        description: "Para objetivo específico, urgência ou prazo curto, com material próprio.",
+        description:
+          "Para objetivo específico, urgência ou prazo curto, com material próprio.",
       },
     ],
   },
@@ -602,7 +615,8 @@ export const diagnostico = {
       },
       {
         question: "Preciso ir a algum lugar?",
-        answer: "Não precisa sair de casa. O ensino é 100% online, direto de onde você estiver.",
+        answer:
+          "Não precisa sair de casa. O ensino é 100% online, direto de onde você estiver.",
       },
       {
         question: "Quanto tempo dura e quantas aulas são?",

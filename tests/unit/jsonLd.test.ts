@@ -3,7 +3,9 @@ import { serializeJsonLd } from "@/lib/jsonLd";
 
 describe("serializeJsonLd", () => {
   it("escapa '<' para um valor não conseguir fechar a tag <script>", () => {
-    const saida = serializeJsonLd({ name: "</script><script>alert(1)</script>" });
+    const saida = serializeJsonLd({
+      name: "</script><script>alert(1)</script>",
+    });
     expect(saida).not.toContain("<");
     expect(saida).toContain("\\u003c/script>");
   });

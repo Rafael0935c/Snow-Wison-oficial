@@ -88,8 +88,14 @@ async function checkIco(ico, expectedSizes) {
     const length = ico.readUInt32LE(at + 8);
     const start = ico.readUInt32LE(at + 12);
     const meta = await sharp(ico.subarray(start, start + length)).metadata();
-    if (meta.width !== declared || meta.height !== declared || declared !== expectedSizes[i]) {
-      throw new Error(`favicon.ico: entrada ${i} não é ${expectedSizes[i]}x${expectedSizes[i]}`);
+    if (
+      meta.width !== declared ||
+      meta.height !== declared ||
+      declared !== expectedSizes[i]
+    ) {
+      throw new Error(
+        `favicon.ico: entrada ${i} não é ${expectedSizes[i]}x${expectedSizes[i]}`
+      );
     }
   }
 }
@@ -101,13 +107,19 @@ async function main() {
   // 48 px) para quem lê só a primeira imagem do arquivo.
   const icoSizes = [48, 32];
   const ico = buildIco(
-    await Promise.all(icoSizes.map(async (size) => ({ size, png: await renderIcon(size) })))
+    await Promise.all(
+      icoSizes.map(async (size) => ({ size, png: await renderIcon(size) }))
+    )
   );
   await checkIco(ico, icoSizes);
 
-  for (const [buffer, expected] of [[icon192, 192], [icon512, 512]]) {
+  for (const [buffer, expected] of [
+    [icon192, 192],
+    [icon512, 512],
+  ]) {
     const { width, height } = await sharp(buffer).metadata();
-    if (width !== expected || height !== expected) throw new Error(`ícone ${expected}px saiu ${width}x${height}`);
+    if (width !== expected || height !== expected)
+      throw new Error(`ícone ${expected}px saiu ${width}x${height}`);
   }
 
   writeFileSync("assets/brand/icon-192.png", icon192);
@@ -117,7 +129,9 @@ async function main() {
   const kb = (b) => `${(b.length / 1024).toFixed(1)} KB`;
   console.log(`assets/brand/icon-192.png  192x192  ${kb(icon192)}`);
   console.log(`public/icon-512.png        512x512  ${kb(icon512)}`);
-  console.log(`app/favicon.ico            ${icoSizes.map((s) => `${s}x${s}`).join(" + ")}  ${kb(ico)}`);
+  console.log(
+    `app/favicon.ico            ${icoSizes.map((s) => `${s}x${s}`).join(" + ")}  ${kb(ico)}`
+  );
 }
 
 main().catch((err) => {

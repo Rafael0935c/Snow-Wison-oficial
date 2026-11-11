@@ -16,70 +16,68 @@ export default function OpengraphImage() {
   ).toString("base64");
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#05070F",
+        padding: "60px",
+      }}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`data:image/png;base64,${logoBase64}`}
+        height={140}
+        width={108}
+        alt=""
+      />
       <div
         style={{
-          width: "100%",
-          height: "100%",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
-          background: "#05070F",
-          padding: "60px",
+          marginTop: 32,
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={`data:image/png;base64,${logoBase64}`}
-          height={140}
-          width={108}
-          alt=""
-        />
         <div
           style={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            marginTop: 32,
+            fontSize: 34,
+            fontWeight: 700,
+            letterSpacing: 6,
+            color: "#F3F5F8",
           }}
         >
-          <div
-            style={{
-              fontSize: 34,
-              fontWeight: 700,
-              letterSpacing: 6,
-              color: "#F3F5F8",
-            }}
-          >
-            {brand.wordmark}
-          </div>
-          <div
-            style={{
-              fontSize: 14,
-              letterSpacing: 10,
-              color: "rgba(243,245,248,0.4)",
-              marginTop: 8,
-            }}
-          >
-            {brand.wordmarkSuffix}
-          </div>
+          {brand.wordmark}
         </div>
         <div
           style={{
-            marginTop: 40,
-            fontSize: 40,
-            fontWeight: 600,
-            color: "#F3F5F8",
-            textAlign: "center",
-            maxWidth: 900,
-            lineHeight: 1.2,
+            fontSize: 14,
+            letterSpacing: 10,
+            color: "rgba(243,245,248,0.4)",
+            marginTop: 8,
           }}
         >
-          {home.hero.headline}
+          {brand.wordmarkSuffix}
         </div>
       </div>
-    ),
+      <div
+        style={{
+          marginTop: 40,
+          fontSize: 40,
+          fontWeight: 600,
+          color: "#F3F5F8",
+          textAlign: "center",
+          maxWidth: 900,
+          lineHeight: 1.2,
+        }}
+      >
+        {home.hero.headline}
+      </div>
+    </div>,
     { ...size }
   );
 }

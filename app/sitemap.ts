@@ -5,7 +5,14 @@ import { siteConfig } from "@/lib/siteConfig";
 // esta rota é gerada no build, não sob demanda.
 export const dynamic = "force-static";
 
-const routes = ["", "/sobre", "/metodologia", "/modalidades", "/resultados", "/faq"];
+const routes = [
+  "",
+  "/sobre",
+  "/metodologia",
+  "/modalidades",
+  "/resultados",
+  "/faq",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({

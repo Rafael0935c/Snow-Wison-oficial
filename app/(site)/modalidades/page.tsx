@@ -20,7 +20,11 @@ export default function ModalidadesPage() {
 
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         {modalidades.blocks.map((block, index) => (
-          <ModalidadeBlock key={block.id} {...block} reverse={index % 2 === 1} />
+          <ModalidadeBlock
+            key={block.id}
+            {...block}
+            reverse={index % 2 === 1}
+          />
         ))}
       </div>
 

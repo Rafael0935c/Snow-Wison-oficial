@@ -16,7 +16,10 @@ export function CtaFinal() {
         <BrandMark size={280} />
       </div>
 
-      <Reveal className="relative mx-auto max-w-3xl text-center" variant="display">
+      <Reveal
+        className="relative mx-auto max-w-3xl text-center"
+        variant="display"
+      >
         <h2 className="font-display text-[clamp(1.9rem,3.4vw,2.6rem)] font-semibold leading-[1.15] text-ivory">
           {home.finalCta.headingLine1}
           <br />

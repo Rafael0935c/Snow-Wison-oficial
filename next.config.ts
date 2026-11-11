@@ -27,7 +27,9 @@ const nextConfig: NextConfig = isStaticExport
     }
   : {
       async headers() {
-        return [{ source: "/:path*", headers: buildSecurityHeaders({ isDev }) }];
+        return [
+          { source: "/:path*", headers: buildSecurityHeaders({ isDev }) },
+        ];
       },
     };
 

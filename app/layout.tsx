@@ -70,7 +70,9 @@ export default function RootLayout({
         {/* Sem JavaScript, nada dispararia a entrada dos blocos (.reveal)
             e eles ficariam invisíveis. */}
         <noscript>
-          <style>{".reveal{opacity:1!important;transform:none!important}"}</style>
+          <style>
+            {".reveal{opacity:1!important;transform:none!important}"}
+          </style>
         </noscript>
       </head>
       <body className="relative flex min-h-full flex-col">

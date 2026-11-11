@@ -31,7 +31,9 @@ export function WhatsAppCTA({
         aria-disabled="true"
         title={a11y.whatsappDisabledTitle}
         className={`inline-flex min-h-11 cursor-not-allowed items-center justify-center gap-2 rounded-sm px-7 py-3.5 font-display text-sm font-semibold tracking-wide text-ivory/30 ${
-          variant === "primary" ? "bg-navy-2" : "underline decoration-line-strong"
+          variant === "primary"
+            ? "bg-navy-2"
+            : "underline decoration-line-strong"
         } ${className}`}
       >
         {children}
